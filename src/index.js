@@ -7,6 +7,8 @@ import ScrollToTop from './hoc';
 import App from './containers/App';
 import { store } from './store/configureStore';
 import reportWebVitals from './reportWebVitals';
+import { ThemeProvider } from 'styled-components';
+import { youtubeTheme } from './theme';
 import './style.css';
 
 WebFont.load({
@@ -27,11 +29,13 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter basename={'/'}>
-        <ScrollToTop>
-          <Switch>
-            <Route path="/" component={App} />
-          </Switch>
-        </ScrollToTop>
+        <ThemeProvider theme={youtubeTheme}>
+          <ScrollToTop>
+            <Switch>
+              <Route path="/" component={App} />
+            </Switch>
+          </ScrollToTop>
+        </ThemeProvider>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,

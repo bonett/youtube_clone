@@ -1,5 +1,0 @@
-export default {
-  FETCH_REQUEST: 'home/FETCH_REQUEST',
-  FETCH_SUCCESS: 'home/FETCH_SUCCESS',
-  FETCH_FAILURE: 'home/FETCH_FAILURE'
-};

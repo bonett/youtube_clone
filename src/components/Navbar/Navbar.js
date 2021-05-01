@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Toggle from '../Toggle/Toggle';
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -10,13 +11,15 @@ class Navbar extends React.Component {
   componentDidMount = () => {
     var burger = document.querySelector('.burger');
     var menu = document.querySelector('#' + burger.dataset.target);
-    burger.addEventListener('click', function () {
+    burger.addEventListener('click', () => {
       burger.classList.toggle('is-active');
       menu.classList.toggle('is-active');
     });
   };
 
   render() {
+    const { isDarkMode, onChangeToggle } = this.props;
+
     return (
       <nav className="navbar is-white">
         <div className="container">
@@ -47,6 +50,7 @@ class Navbar extends React.Component {
               <a className="navbar-item" href="admin.html">
                 Reports
               </a>
+              <Toggle isDarkMode={isDarkMode} onChangeToggle={onChangeToggle} />
             </div>
           </div>
         </div>
@@ -54,5 +58,14 @@ class Navbar extends React.Component {
     );
   }
 }
+
+Navbar.propTypes = {
+  isDarkMode: PropTypes.bool.isRequired,
+  onChangeToggle: PropTypes.func
+};
+
+Navbar.defaultProps = {
+  onChangeToggle: () => {}
+};
 
 export default Navbar;

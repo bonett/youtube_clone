@@ -1,6 +1,6 @@
 import { fork } from 'redux-saga/effects';
-import { rootSaga as videos } from './videos';
+import { rootSaga as appData } from './app';
 
 export default function* rootSaga() {
-  yield fork(videos);
+  yield fork(appData);
 }
