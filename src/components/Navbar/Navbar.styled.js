@@ -8,6 +8,14 @@ export const NavigationBar = styled(({ ...rest }) => <nav {...rest} />)`
     padding-top: 0.4em;
     padding-bottom: 0.4em;
 
+    .btn-burger {
+      cursor: pointer;
+      margin-top: 14px;
+      margin-left: 10px;
+      margin-right: 10px;
+      color: ${!isDarkMode ? theme.color.text : theme.color.light};
+    }
+
     a.navbar-item:focus,
     a.navbar-item:focus-within,
     a.navbar-item.is-active,

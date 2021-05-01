@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Aside, Item } from './Sidebar.styled';
 
-function Sidebar({ isDarkMode, handleClickPage }) {
+function Sidebar({ isDarkMode, handleClickPage, openSidebar }) {
+  console.log(openSidebar);
   return (
-    <Aside className="menu is-hidden-mobile">
+    <Aside className="menu">
       <ul className="menu-list">
         <li>
           <Item
@@ -32,7 +33,7 @@ function Sidebar({ isDarkMode, handleClickPage }) {
             <i className="icon material-icons">subscriptions</i> Subscriptions
           </Item>
         </li>
-        <hr />
+        <hr className="hidden-mobile" />
         <li>
           <Item
             isDarkMode={isDarkMode}
@@ -41,7 +42,7 @@ function Sidebar({ isDarkMode, handleClickPage }) {
             <i className="icon material-icons">video_library</i> Library
           </Item>
         </li>
-        <li>
+        <li className="hidden-mobile">
           <Item
             isDarkMode={isDarkMode}
             onClick={() => handleClickPage('history')}
@@ -49,7 +50,7 @@ function Sidebar({ isDarkMode, handleClickPage }) {
             <i className="icon material-icons">history</i> History
           </Item>
         </li>
-        <li>
+        <li className="hidden-mobile">
           <Item
             isDarkMode={isDarkMode}
             onClick={() => handleClickPage('videos')}
@@ -57,7 +58,7 @@ function Sidebar({ isDarkMode, handleClickPage }) {
             <i className="icon material-icons">slideshow</i> Videos
           </Item>
         </li>
-        <li>
+        <li className="hidden-mobile">
           <Item
             isDarkMode={isDarkMode}
             onClick={() => handleClickPage('movies')}
@@ -65,7 +66,7 @@ function Sidebar({ isDarkMode, handleClickPage }) {
             <i className="icon material-icons">theaters</i> Movies
           </Item>
         </li>
-        <li>
+        <li className="hidden-mobile">
           <Item
             isDarkMode={isDarkMode}
             onClick={() => handleClickPage('watch-later')}
@@ -80,6 +81,7 @@ function Sidebar({ isDarkMode, handleClickPage }) {
 
 Sidebar.propTypes = {
   isDarkMode: PropTypes.bool.isRequired,
+  openSidebar: PropTypes.bool.isRequired,
   handleClickPage: PropTypes.func
 };
 

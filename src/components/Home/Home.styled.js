@@ -9,7 +9,7 @@ export const VideoSection = styled(({ ...rest }) => <div {...rest} />)`
 `;
 
 export const Columns = styled(({ ...rest }) => <div {...rest} />)`
-  ${({ theme, isDarkMode }) => css`
+  ${() => css`
     overflow-y: scroll;
     display: grid;
     grid-template-columns: repeat(4, 1fr);

@@ -12,14 +12,17 @@ import History from '../../containers/History';
 import Videos from '../../containers/Videos';
 import Movies from '../../containers/Movies';
 import WatchLater from '../../containers/Watch-later';
-import { AppContainer } from './App.styled';
+import { AppContainer, Main, Aside, Wrapper } from './App.styled';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      openSidebar: false
+    };
     this.changeThemeColor = this.changeThemeColor.bind(this);
     this.switchPageByName = this.switchPageByName.bind(this);
+    this.handleSidebar = this.handleSidebar.bind(this);
   }
 
   componentDidMount = () => {
@@ -29,6 +32,13 @@ class App extends React.Component {
     };
     fetchPopularVideos(payload);
   };
+
+  handleSidebar() {
+    const { openSidebar } = this.state;
+    this.setState({
+      openSidebar: !openSidebar
+    });
+  }
 
   changeThemeColor() {
     const { isDarkMode, setDarkMode } = this.props;
@@ -46,23 +56,26 @@ class App extends React.Component {
 
   render() {
     const { isDarkMode } = this.props;
+    const { openSidebar } = this.state;
 
     return (
       <AppContainer isDarkMode={isDarkMode}>
         <Navbar
+          handleSidebar={this.handleSidebar}
           onChangeToggle={this.changeThemeColor}
           isDarkMode={isDarkMode}
         />
         <div className="container-fluid">
-          <div className="columns">
-            <div className="column is-2">
+          <Main>
+            <Aside>
               <Sidebar
                 isDarkMode={isDarkMode}
+                openSidebar={openSidebar}
                 handleClickPage={this.switchPageByName}
               />
-            </div>
-            <div className="column is-10">
-              <Breadcrumb isDarkMode={isDarkMode} />
+            </Aside>
+            <Wrapper>
+              {/*   <Breadcrumb isDarkMode={isDarkMode} /> */}
               <Switch>
                 <Route path="/home" component={Home} />
                 <Route path="/explore" component={Explore} />
@@ -74,8 +87,8 @@ class App extends React.Component {
                 <Route path="/watch-later" component={WatchLater} />
                 <Redirect path="*" to={`/home`} />
               </Switch>
-            </div>
-          </div>
+            </Wrapper>
+          </Main>
         </div>
       </AppContainer>
     );

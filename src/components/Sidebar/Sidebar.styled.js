@@ -2,7 +2,17 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 export const Aside = styled(({ ...rest }) => <aside {...rest} />)`
-  ${() => css``}
+  ${() => css`
+    .hidden-mobile {
+      display: block;
+    }
+
+    @media screen and (max-width: 992px) {
+      .hidden-mobile {
+        display: none;
+      }
+    }
+  `}
 `;
 
 export const Item = styled(({ ...rest }) => <a {...rest} />)`
@@ -10,7 +20,8 @@ export const Item = styled(({ ...rest }) => <a {...rest} />)`
     align-items: center !important;
     display: flex !important;
     flex-direction: row !important;
-    font-size: 1em !important;
+    font-size: 0.9em !important;
+    font-weight: 400 !important;
     justify-content: flex-start !important;
     padding: 14px 24px !important;
     width: 100% !important;
@@ -23,7 +34,22 @@ export const Item = styled(({ ...rest }) => <a {...rest} />)`
 
     i {
       margin-right: 10px;
+      font-size: 1.6em !important;
       color: ${!isDarkMode ? theme.color.text : theme.color.light} !important;
+    }
+
+    @media screen and (max-width: 992px) {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      align-items: center !important;
+      font-size: 0.6em !important;
+      font-weight: 400 !important;
+
+      i {
+        margin-right: 0 !important;
+        font-size: 2em !important;
+      }
     }
   `}
 `;
