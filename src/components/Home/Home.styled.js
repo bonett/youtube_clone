@@ -1,9 +1,9 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-export const VideoSection = styled(({ ...rest }) => <div {...rest} />)`
+export const HomeSection = styled(({ ...rest }) => <div {...rest} />)`
   ${({ theme, isDarkMode }) => css`
-    background-color: ${!isDarkMode ? theme.color.light : '#131313'};
+    background-color: ${!isDarkMode ? '#f5f5f5' : '#131313'};
     padding: 20px;
   `}
 `;
@@ -101,7 +101,7 @@ export const DateSince = styled(({ ...rest }) => <h6 {...rest} />)`
   `}
 `;
 
-VideoSection.displayName = 'VideoSection';
+HomeSection.displayName = 'HomeSection';
 Columns.displayName = 'Columns';
 Card.displayName = 'Card';
 Cover.displayName = 'Cover';

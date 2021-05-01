@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { SubscriptionsSection } from './Subscriptions.styled';
 
 function Subscriptions({ isDarkMode }) {
-  return <section>asjk</section>;
+  return (
+    <SubscriptionsSection isDarkMode={isDarkMode}>asjk</SubscriptionsSection>
+  );
 }
 
 Subscriptions.propTypes = {

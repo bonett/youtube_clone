@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Navbar from '../Navbar';
 import Sidebar from '../Sidebar';
-import Breadcrumb from '../Breadcrumb/Breadcrumb';
+import Breadcrumb from '../Breadcrumb';
+import Banner from '../Banner';
 import Home from '../../containers/Home';
 import Explore from '../../containers/Explore';
 import Subscriptions from '../../containers/Subscriptions';
@@ -18,11 +19,13 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      openSidebar: false
+      openSidebar: false,
+      isShowBanner: true
     };
     this.changeThemeColor = this.changeThemeColor.bind(this);
     this.switchPageByName = this.switchPageByName.bind(this);
     this.handleSidebar = this.handleSidebar.bind(this);
+    this.handleCloseBanner = this.handleCloseBanner.bind(this);
   }
 
   componentDidMount = () => {
@@ -37,6 +40,13 @@ class App extends React.Component {
     const { openSidebar } = this.state;
     this.setState({
       openSidebar: !openSidebar
+    });
+  }
+
+  handleCloseBanner() {
+    const { isShowBanner } = this.state;
+    this.setState({
+      isShowBanner: !isShowBanner
     });
   }
 
@@ -56,7 +66,7 @@ class App extends React.Component {
 
   render() {
     const { isDarkMode } = this.props;
-    const { openSidebar } = this.state;
+    const { openSidebar, isShowBanner } = this.state;
 
     return (
       <AppContainer isDarkMode={isDarkMode}>
@@ -76,6 +86,11 @@ class App extends React.Component {
             </Aside>
             <Wrapper>
               {/*   <Breadcrumb isDarkMode={isDarkMode} /> */}
+              <React.Fragment>
+                {isShowBanner && (
+                  <Banner handleCloseBanner={this.handleCloseBanner} />
+                )}
+              </React.Fragment>
               <Switch>
                 <Route path="/home" component={Home} />
                 <Route path="/explore" component={Explore} />

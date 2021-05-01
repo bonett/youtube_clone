@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { WatchLaterSection } from './Watch-later.styled';
 
 function WatchLater({ isDarkMode }) {
-  return <section>asjk</section>;
+  return <WatchLaterSection isDarkMode={isDarkMode}>asjk</WatchLaterSection>;
 }
 
 WatchLater.propTypes = {

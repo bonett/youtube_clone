@@ -2,9 +2,14 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 export const Aside = styled(({ ...rest }) => <aside {...rest} />)`
-  ${() => css`
+  ${({ isDarkMode }) => css`
     .hidden-mobile {
       display: block;
+    }
+
+    hr {
+      border-color: ${!isDarkMode ? '#dedede' : '#3a3a3a'};
+      height: 1px !important;
     }
 
     @media screen and (max-width: 992px) {

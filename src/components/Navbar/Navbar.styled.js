@@ -11,7 +11,7 @@ export const NavigationBar = styled(({ ...rest }) => <nav {...rest} />)`
     .btn-burger {
       cursor: pointer;
       margin-top: 14px;
-      margin-left: 10px;
+      margin-left: 8px;
       margin-right: 10px;
       color: ${!isDarkMode ? theme.color.text : theme.color.light};
     }
@@ -49,8 +49,10 @@ export const NavigationBar = styled(({ ...rest }) => <nav {...rest} />)`
     .navbar-dropdown {
       background-color: ${!isDarkMode ? theme.color.light : theme.color.dark};
       border-top: none;
+
       hr {
-        border-color: ${!isDarkMode ? theme.border.light : theme.border.dark};
+        border-color: ${!isDarkMode ? '#dedede' : '#3a3a3a'};
+        height: 1px !important;
       }
 
       a {

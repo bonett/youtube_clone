@@ -33,7 +33,7 @@ export const Aside = styled(({ ...rest }) => <div {...rest} />)`
 `;
 
 export const Wrapper = styled(({ ...rest }) => <div {...rest} />)`
-  ${() => css`
+  ${({ theme, isDarkMode }) => css`
     display: flex;
     flex-direction: column;
     width: 87%;

@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { VideosSection } from './Videos.styled';
 
 function Videos({ isDarkMode }) {
-  return <section>asjk</section>;
+  return <VideosSection isDarkMode={isDarkMode}>asjk</VideosSection>;
 }
 
 Videos.propTypes = {

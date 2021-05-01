@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import utils from '../../utils';
 import {
-  VideoSection,
+  HomeSection,
   Columns,
   Card,
   Cover,
@@ -300,7 +300,7 @@ const vide = [
 ];
 function Home({ isDarkMode, popularVideos }) {
   return (
-    <VideoSection isDarkMode={isDarkMode}>
+    <HomeSection isDarkMode={isDarkMode}>
       <Columns>
         {vide.map((video) => {
           const id = video.id.videoId;
@@ -329,7 +329,7 @@ function Home({ isDarkMode, popularVideos }) {
           );
         })}
       </Columns>
-    </VideoSection>
+    </HomeSection>
   );
 }
 

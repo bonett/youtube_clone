@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { HistorySection } from './History.styled';
 
 function History({ isDarkMode }) {
-  return <section>asjk</section>;
+  return <HistorySection isDarkMode={isDarkMode}>asjk</HistorySection>;
 }
 
 History.propTypes = {
