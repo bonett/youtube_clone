@@ -29,7 +29,7 @@ class App extends React.Component {
           onChangeToggle={this.changeThemeColor}
           isDarkMode={isDarkMode}
         />
-        <div className="container">
+        <div className="container-fluid">
           <div className="columns">
             <div className="column is-3 ">
               <Sidebar />

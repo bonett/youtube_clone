@@ -1,13 +1,16 @@
 export const youtubeTheme = {
   color: {
     light: '#fff',
-    dark: '#131313',
+    dark: '#212121',
+    text: '#505050',
     gray: '#f5f5f5',
     purple: '#d532f3',
     yellow: '#ffe10c'
   },
   border: {
-    variant1: '#dadada'
+    variant1: '#dadada',
+    dark: '#313131',
+    light: '#e8e7e7'
   },
   boxShadow: {
     variant1:

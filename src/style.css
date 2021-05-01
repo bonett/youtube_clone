@@ -1,1 +1,13 @@
 @import 'bulma/css/bulma.css';
+
+.navbar-item.has-dropdown.is-active .navbar-link {
+  background: transparent;
+}
+
+.navbar-link:not(.is-arrowless) {
+  padding-right: 1em;
+}
+
+.navbar-link:not(.is-arrowless)::after {
+  display: none !important;
+}

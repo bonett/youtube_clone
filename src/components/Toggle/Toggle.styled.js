@@ -12,7 +12,7 @@ export const Wrapper = styled(({ ...rest }) => <div {...rest} />)`
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: ${!isDarkMode ? theme.color.gray : theme.color.dark};
+      background-color: ${!isDarkMode ? theme.color.gray : '#3e3e3e'};
       -webkit-transition: 0.4s;
       transition: 0.4s;
     }
