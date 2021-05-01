@@ -4,11 +4,20 @@ import styled, { css } from 'styled-components';
 export const NavigationBar = styled(({ ...rest }) => <nav {...rest} />)`
   ${({ theme, isDarkMode }) => css`
     background-color: ${!isDarkMode ? theme.color.light : theme.color.dark};
-    border-bottom: 1px solid
-      ${!isDarkMode ? theme.border.light : theme.border.dark};
     padding-left: 1em;
     padding-top: 0.4em;
     padding-bottom: 0.4em;
+
+    a.navbar-item:focus,
+    a.navbar-item:focus-within,
+    a.navbar-item.is-active,
+    .navbar-link:focus,
+    .navbar-link:focus-within,
+    .navbar-link.is-active {
+      background-color: ${!isDarkMode
+        ? theme.color.light
+        : theme.color.dark} !important;
+    }
 
     .buttons {
       a {
@@ -48,7 +57,7 @@ export const NavigationBar = styled(({ ...rest }) => <nav {...rest} />)`
         }
 
         & > div {
-          margin-left: 10px;
+          margin-left: 40px;
         }
       }
     }

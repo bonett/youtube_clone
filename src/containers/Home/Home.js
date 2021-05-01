@@ -5,9 +5,11 @@ import Home from '../../components/Home';
 function mapStateToProps(state) {
   const appSelectors = appStore.selectors(state);
   const darkMode = appSelectors.getThemeApp();
+  const popularVideos = appSelectors.getPopularVideos();
 
   return {
-    isDarkMode: darkMode
+    isDarkMode: darkMode,
+    popularVideos
   };
 }
 

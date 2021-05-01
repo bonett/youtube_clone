@@ -91,7 +91,7 @@ class Navbar extends React.Component {
                   <i className="icon material-icons">notifications</i>
                 </a>
                 <div className="navbar-end">
-                  <div className="navbar-item has-dropdown is-hoverable">
+                  <div className="navbar-item has-dropdown is-active">
                     <div className="photo">
                       <UserPhoto src={defaultUser} />
                     </div>

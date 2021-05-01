@@ -1,26 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BreadcrumbWrapper } from './Breadcrumb.styled';
+import { BreadcrumbWrapper, List, Item } from './Breadcrumb.styled';
 
 function Breadcrumb({ isDarkMode }) {
   return (
     <BreadcrumbWrapper isDarkMode={isDarkMode} className="breadcrumb">
-      <ul>
-        <li>
-          <a href="../">Bulma</a>
-        </li>
-        <li>
-          <a href="../">Templates</a>
-        </li>
-        <li>
-          <a href="../">Examples</a>
-        </li>
-        <li className="is-active">
-          <a href="#" aria-current="page">
-            Admin
-          </a>
-        </li>
-      </ul>
+      <List className="breadcrumb">
+        <Item>
+          <a>Bulma</a>
+        </Item>
+        <Item>
+          <a>Bulma</a>
+        </Item>
+      </List>
     </BreadcrumbWrapper>
   );
 }

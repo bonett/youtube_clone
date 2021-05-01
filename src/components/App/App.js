@@ -19,6 +19,7 @@ class App extends React.Component {
     super(props);
     this.state = {};
     this.changeThemeColor = this.changeThemeColor.bind(this);
+    this.switchPageByName = this.switchPageByName.bind(this);
   }
 
   componentDidMount = () => {
@@ -38,9 +39,14 @@ class App extends React.Component {
     }
   }
 
+  switchPageByName(path) {
+    const { history } = this.props;
+    history.push(`/${path}`);
+  }
+
   render() {
-    const { isDarkMode, popularVideos } = this.props;
-    console.log(popularVideos, 'spopularVideos');
+    const { isDarkMode } = this.props;
+
     return (
       <AppContainer isDarkMode={isDarkMode}>
         <Navbar
@@ -50,7 +56,10 @@ class App extends React.Component {
         <div className="container-fluid">
           <div className="columns">
             <div className="column is-2">
-              <Sidebar isDarkMode={isDarkMode} />
+              <Sidebar
+                isDarkMode={isDarkMode}
+                handleClickPage={this.switchPageByName}
+              />
             </div>
             <div className="column is-10">
               <Breadcrumb isDarkMode={isDarkMode} />
@@ -77,13 +86,13 @@ App.propTypes = {
   isDarkMode: PropTypes.bool.isRequired,
   setDarkMode: PropTypes.func,
   fetchPopularVideos: PropTypes.func,
-  popularVideos: PropTypes.array
+  history: PropTypes.object
 };
 
 App.defaultProps = {
   setDarkMode: () => {},
   fetchPopularVideos: () => {},
-  popularVideos: []
+  history: {}
 };
 
 export default App;
