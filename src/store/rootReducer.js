@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-/* import { rootReducer as ads } from './ads'; */
+import { rootReducer as dataReducer } from './videos';
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({
+  dataReducer
+});
 
 export default rootReducer;

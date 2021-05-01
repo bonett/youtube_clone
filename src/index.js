@@ -7,6 +7,7 @@ import ScrollToTop from './hoc';
 import App from './containers/App';
 import { store } from './store/configureStore';
 import reportWebVitals from './reportWebVitals';
+import './style.css';
 
 WebFont.load({
   google: {

@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import at from '../types';
 
-export const Home = (state = {}, action) => {
+export const Videos = (state = [], action) => {
   switch (action.type) {
     case at.FETCH_REQUEST: {
       return 'loading';
@@ -12,5 +12,5 @@ export const Home = (state = {}, action) => {
 };
 
 export default combineReducers({
-  Home
+  Videos
 });

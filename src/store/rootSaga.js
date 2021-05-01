@@ -1,5 +1,6 @@
-/* import { rootSaga as ads } from './ads'; */
+import { fork } from 'redux-saga/effects';
+import { rootSaga as videos } from './videos';
 
 export default function* rootSaga() {
-  /* yield fork(ads); */
+  yield fork(videos);
 }
