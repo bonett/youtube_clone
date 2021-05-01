@@ -38,7 +38,7 @@ export const NavigationBar = styled(({ ...rest }) => <nav {...rest} />)`
       a {
         color: ${!isDarkMode ? theme.color.text : theme.color.light};
         margin: 2px 0;
-        padding: 6px 30px;
+        padding: 6px 22px;
 
         i {
           color: ${!isDarkMode ? theme.color.text : theme.color.light};
@@ -70,5 +70,66 @@ export const UserPhoto = styled(({ ...rest }) => <img {...rest} />)`
   `}
 `;
 
+export const Profile = styled(({ ...rest }) => <div {...rest} />)`
+  ${() => css`
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  `}
+`;
+
+export const Photo = styled(({ ...rest }) => <div {...rest} />)`
+  ${() => css`
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 25%;
+  `}
+`;
+
+export const Info = styled(({ ...rest }) => <div {...rest} />)`
+  ${() => css`
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 75%;
+  `}
+`;
+
+export const Name = styled(({ ...rest }) => <h4 {...rest} />)`
+  ${({ theme, isDarkMode }) => css`
+    color: ${!isDarkMode ? theme.color.text : theme.color.light};
+    font-weight: 700 !important;
+    text-transform: captalize !important;
+  `}
+`;
+
+export const Email = styled(({ ...rest }) => <h5 {...rest} />)`
+  ${({ theme, isDarkMode }) => css`
+    color: ${!isDarkMode ? theme.color.text : theme.color.light};
+    font-weight: 700 !important;
+    text-transform: captalize !important;
+  `}
+`;
+
+export const ManageAccount = styled(({ ...rest }) => <a {...rest} />)`
+  ${({ theme }) => css`
+    color: ${theme.color.blue} !important;
+    padding: 0 !important;
+    font-size: 0.8em !important;
+    font-weight: 500 !important;
+  `}
+`;
+
 NavigationBar.displayName = 'NavigationBar';
 UserPhoto.displayName = 'UserPhoto';
+Profile.displayName = 'Profile';
+Photo.displayName = 'Photo';
+Info.displayName = 'Info';
+Name.displayName = 'Name';
+Email.displayName = 'Email';
+ManageAccount.displayName = 'ManageAccount';

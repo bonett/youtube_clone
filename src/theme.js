@@ -5,7 +5,8 @@ export const youtubeTheme = {
     text: '#505050',
     gray: '#f5f5f5',
     purple: '#d532f3',
-    yellow: '#ffe10c'
+    yellow: '#ffe10c',
+    blue: '#0065ff'
   },
   border: {
     variant1: '#dadada',

@@ -4,7 +4,16 @@ import Toggle from '../Toggle/Toggle';
 import logoDark from '../../static/images/logo-dark.png';
 import logoLight from '../../static/images/logo-light.png';
 import defaultUser from '../../static/images/user.png';
-import { NavigationBar, UserPhoto } from './Navbar.styled';
+import {
+  NavigationBar,
+  UserPhoto,
+  Profile,
+  Photo,
+  Info,
+  Name,
+  Email,
+  ManageAccount
+} from './Navbar.styled';
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -90,12 +99,27 @@ class Navbar extends React.Component {
                   <i className="icon material-icons">notifications</i>
                 </a>
                 <div className="navbar-end">
-                  <div className="navbar-item has-dropdown is-active">
+                  <div className="navbar-item has-dropdown is-hoverable">
                     <a className="navbar-link photo">
                       <UserPhoto src={defaultUser} />
                     </a>
 
                     <div className="navbar-dropdown is-right">
+                      <Profile>
+                        <Photo>
+                          <UserPhoto src={defaultUser} />
+                        </Photo>
+                        <Info>
+                          <Name isDarkMode={isDarkMode}>Wilfrido Bonett</Name>
+                          <Email isDarkMode={isDarkMode}>
+                            wbonett10@gmail.com
+                          </Email>
+                          <ManageAccount>
+                            Manage your Google Account
+                          </ManageAccount>
+                        </Info>
+                      </Profile>
+                      <hr className="navbar-divider" />
                       <a className="navbar-item">
                         <i className="icon material-icons">account_box</i> Your
                         channel
