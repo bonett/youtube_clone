@@ -32,7 +32,7 @@ class App extends React.Component {
   componentDidMount = () => {
     const { fetchPopularVideos, userSubscription } = this.props;
     const payload = {
-      query: 'apple'
+      query: 'all'
     };
 
     if (!userSubscription) {
@@ -89,7 +89,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { isDarkMode } = this.props;
+    const { isDarkMode, suggestions, queryType } = this.props;
     const { openSidebar, showBanner } = this.state;
 
     return (
@@ -110,7 +110,11 @@ class App extends React.Component {
             </Aside>
             <Wrapper>
               <React.Fragment>
-                <Breadcrumb isDarkMode={isDarkMode} />
+                <Breadcrumb
+                  isDarkMode={isDarkMode}
+                  queryType={queryType}
+                  suggestions={suggestions}
+                />
               </React.Fragment>
               <React.Fragment>
                 {showBanner && (
@@ -145,14 +149,17 @@ App.propTypes = {
   setDarkMode: PropTypes.func,
   setUserSubscription: PropTypes.func,
   fetchPopularVideos: PropTypes.func,
-  history: PropTypes.object
+  history: PropTypes.object,
+  suggestions: PropTypes.array,
+  queryType: PropTypes.string.isRequired
 };
 
 App.defaultProps = {
   setDarkMode: () => {},
   setUserSubscription: () => {},
   fetchPopularVideos: () => {},
-  history: {}
+  history: {},
+  suggestions: []
 };
 
 export default App;

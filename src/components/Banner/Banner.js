@@ -12,7 +12,7 @@ import {
 import LogoBanner from '../../static/images/logo-banner.png';
 function Banner({ handleCloseBanner, acceptSubscription }) {
   return (
-    <BannerSection class="notification">
+    <BannerSection className="notification">
       <Wrapper>
         <Close className="material-icons" onClick={handleCloseBanner}>
           disabled_by_default

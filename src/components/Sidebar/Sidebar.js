@@ -2,17 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Aside, Item } from './Sidebar.styled';
 
-function Sidebar({ isDarkMode, handleClickPage, openSidebar }) {
-  console.log(openSidebar);
+function Sidebar({ isDarkMode, handleClickPage }) {
   return (
     <Aside className="menu">
       <ul className="menu-list">
         <li>
-          <Item
-            class="is-active"
-            isDarkMode={isDarkMode}
-            onClick={() => handleClickPage('home')}
-          >
+          <Item isDarkMode={isDarkMode} onClick={() => handleClickPage('home')}>
             {' '}
             <i className="icon material-icons">home</i> Home
           </Item>
@@ -81,7 +76,7 @@ function Sidebar({ isDarkMode, handleClickPage, openSidebar }) {
 
 Sidebar.propTypes = {
   isDarkMode: PropTypes.bool.isRequired,
-  openSidebar: PropTypes.bool.isRequired,
+  /* openSidebar: PropTypes.bool.isRequired, */
   handleClickPage: PropTypes.func
 };
 

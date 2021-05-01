@@ -4,10 +4,12 @@ export default function (globalState) {
   const getThemeApp = () => state.darkMode;
   const getPopularVideos = () => state.popularVideos;
   const getUserSubscription = () => state.userSubscription;
+  const getQueryType = () => state.queryType;
 
   return {
     getThemeApp,
     getPopularVideos,
-    getUserSubscription
+    getUserSubscription,
+    getQueryType
   };
 }

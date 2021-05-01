@@ -1,26 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BreadcrumbWrapper, List, Item } from './Breadcrumb.styled';
+import classnames from 'classnames';
+import { BreadcrumbWrapper, List } from './Breadcrumb.styled';
 
-function Breadcrumb({ isDarkMode }) {
+function Breadcrumb({ isDarkMode, suggestions, queryType }) {
   return (
     <BreadcrumbWrapper isDarkMode={isDarkMode} className="breadcrumb">
-      <List className="breadcrumb">
-        <Item>
-          <a>Bulma</a>
-        </Item>
-        <Item>
-          <a>Bulma</a>
-        </Item>
+      <List isDarkMode={isDarkMode} className="breadcrumb">
+        {suggestions.map((item, index) => {
+          return (
+            <span
+              key={index}
+              className={classnames({
+                'tag is-active': queryType === item.text
+              })}
+            >
+              {item.displayText}
+            </span>
+          );
+        })}
       </List>
     </BreadcrumbWrapper>
   );
 }
 
 Breadcrumb.propTypes = {
-  isDarkMode: PropTypes.bool.isRequired
+  isDarkMode: PropTypes.bool.isRequired,
+  suggestions: PropTypes.array,
+  queryType: PropTypes.string.isRequired
 };
 
-Breadcrumb.defaultProps = {};
+Breadcrumb.defaultProps = {
+  suggestions: []
+};
 
 export default Breadcrumb;

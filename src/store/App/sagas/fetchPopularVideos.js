@@ -7,9 +7,11 @@ export default function* fetchPopularVideos(params) {
   try {
     const results = yield call(api.fetchPopularVideoList, params);
     const data = results && results.data;
+    const value = data && data.value;
+    console.log(value);
     yield put({
       type: at.FETCH_SUCCESS_POPULAR_VIDEOS,
-      popularVideos: data.items
+      popularVideos: value
     });
   } catch (error) {
     yield put({

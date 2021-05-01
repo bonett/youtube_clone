@@ -13,28 +13,28 @@ export const BreadcrumbWrapper = styled(({ ...rest }) => <nav {...rest} />)`
 
 export const List = styled(({ ...rest }) => <ul {...rest} />)`
   ${({ theme, isDarkMode }) => css`
-    padding: 10px 16px;
-    list-style: none;
+    padding: 16px;
 
-    li+li:before {
-      color:  ${!isDarkMode ? theme.color.light : theme.color.dark};
-      content: "/\00a0";
-    }
-  `}
-`;
+    span {
+      cursor: pointer;
+      background-color: ${!isDarkMode
+        ? theme.color.light
+        : '#313131'} !important;
+      color: ${!isDarkMode ? theme.color.text : theme.color.light} !important;
+      margin-right: 10px;
+      border-radius: 20px;
+      font-weight: 600 !important;
+      font-size: 0.85em !important;
+      padding: 6px 12px !important;
+      border: 1px solid ${!isDarkMode ? '#6d6d6d' : '#6d6d6d'} !important ;
 
-export const Item = styled(({ ...rest }) => <li {...rest} />)`
-  ${({ theme, isDarkMode }) => css`
-    display: inline;
-    font-size: 1em;
-
-    a {
-      color: #0275d8;
-      text-decoration: none;
-
-      &:hover {
-        color: #01447e;
-        text-decoration: underline;
+      &.is-active {
+        background-color: ${isDarkMode
+          ? theme.color.light
+          : '#313131'} !important;
+        height: auto !important;
+        color: ${isDarkMode ? theme.color.text : theme.color.light} !important;
+        border: 1px solid ${isDarkMode ? theme.color.light : '#6d6d6d'} !important ;
       }
     }
   `}
@@ -42,4 +42,3 @@ export const Item = styled(({ ...rest }) => <li {...rest} />)`
 
 BreadcrumbWrapper.displayName = 'BreadcrumbWrapper';
 List.displayName = 'List';
-Item.displayName = 'Item';

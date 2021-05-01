@@ -5,13 +5,32 @@ import App from '../../components/App';
 function mapStateToProps(state) {
   const appSelectors = appStore.selectors(state);
   const darkMode = appSelectors.getThemeApp();
-  const popularVideos = appSelectors.getPopularVideos();
+  const apiResult = appSelectors.getPopularVideos();
   const userSubscription = appSelectors.getUserSubscription();
+  const queryType = appSelectors.getQueryType();
+  let suggestionsFiltered = [
+    {
+      displayText: 'All',
+      text: 'all'
+    }
+  ];
+
+  const suggestions =
+    apiResult.pivotSuggestions[apiResult.pivotSuggestions.length - 1]
+      .suggestions;
+  suggestions.filter((item) => {
+    suggestionsFiltered.push({
+      displayText: item.displayText,
+      text: item.text
+    });
+  });
 
   return {
     isDarkMode: darkMode,
-    popularVideos,
-    userSubscription
+    popularVideos: apiResult.value,
+    userSubscription,
+    suggestions: suggestionsFiltered,
+    queryType
   };
 }
 

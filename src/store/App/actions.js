@@ -9,6 +9,15 @@ export const setDarkMode = (payload) => ({
   payload
 });
 
+export const getQueryType = () => ({
+  type: at.GET_QUERY_TYPE
+});
+
+export const setQueryType = (payload) => ({
+  type: at.SET_QUERY_TYPE,
+  payload
+});
+
 export const getUserSubscription = () => ({
   type: at.GET_USER_SUBSCRIPTION
 });
