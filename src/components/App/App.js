@@ -1,8 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-/* import { Route, Switch, Redirect } from 'react-router-dom'; */
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Navbar from '../Navbar';
 import Sidebar from '../Sidebar';
+import Breadcrumb from '../Breadcrumb/Breadcrumb';
+import Home from '../../containers/Home';
+import Explore from '../../containers/Explore';
+import Subscriptions from '../../containers/Subscriptions';
+import Library from '../../containers/Library';
+import History from '../../containers/History';
+import Videos from '../../containers/Videos';
+import Movies from '../../containers/Movies';
+import WatchLater from '../../containers/Watch-later';
 import { AppContainer } from './App.styled';
 
 class App extends React.Component {
@@ -44,302 +53,21 @@ class App extends React.Component {
               <Sidebar isDarkMode={isDarkMode} />
             </div>
             <div className="column is-10">
-              <nav className="breadcrumb" aria-label="breadcrumbs">
-                <ul>
-                  <li>
-                    <a href="../">Bulma</a>
-                  </li>
-                  <li>
-                    <a href="../">Templates</a>
-                  </li>
-                  <li>
-                    <a href="../">Examples</a>
-                  </li>
-                  <li className="is-active">
-                    <a href="#" aria-current="page">
-                      Admin
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-              <section className="hero is-info welcome is-small">
-                <div className="hero-body">
-                  <div className="container">
-                    <h1 className="title">Hello, Admin.</h1>
-                    <h2 className="subtitle">
-                      I hope you are having a great day!
-                    </h2>
-                  </div>
-                </div>
-              </section>
-              <section className="info-tiles">
-                <div className="tile is-ancestor has-text-centered">
-                  <div className="tile is-parent">
-                    <article className="tile is-child box">
-                      <p className="title">439k</p>
-                      <p className="subtitle">Users</p>
-                    </article>
-                  </div>
-                  <div className="tile is-parent">
-                    <article className="tile is-child box">
-                      <p className="title">59k</p>
-                      <p className="subtitle">Products</p>
-                    </article>
-                  </div>
-                  <div className="tile is-parent">
-                    <article className="tile is-child box">
-                      <p className="title">3.4k</p>
-                      <p className="subtitle">Open Orders</p>
-                    </article>
-                  </div>
-                  <div className="tile is-parent">
-                    <article className="tile is-child box">
-                      <p className="title">19</p>
-                      <p className="subtitle">Exceptions</p>
-                    </article>
-                  </div>
-                </div>
-              </section>
-              <div className="columns">
-                <div className="column is-6">
-                  <div className="card events-card">
-                    <header className="card-header">
-                      <p className="card-header-title">Events</p>
-                      <a
-                        href="#"
-                        className="card-header-icon"
-                        aria-label="more options"
-                      >
-                        <span className="icon">
-                          <i
-                            className="fa fa-angle-down"
-                            aria-hidden="true"
-                          ></i>
-                        </span>
-                      </a>
-                    </header>
-                    <div className="card-table">
-                      <div className="content">
-                        <table className="table is-fullwidth is-striped">
-                          <tbody>
-                            <tr>
-                              <td width="5%">
-                                <i className="fa fa-bell-o"></i>
-                              </td>
-                              <td>Lorum ipsum dolem aire</td>
-                              <td className="level-right">
-                                <a
-                                  className="button is-small is-primary"
-                                  href="#"
-                                >
-                                  Action
-                                </a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td width="5%">
-                                <i className="fa fa-bell-o"></i>
-                              </td>
-                              <td>Lorum ipsum dolem aire</td>
-                              <td className="level-right">
-                                <a
-                                  className="button is-small is-primary"
-                                  href="#"
-                                >
-                                  Action
-                                </a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td width="5%">
-                                <i className="fa fa-bell-o"></i>
-                              </td>
-                              <td>Lorum ipsum dolem aire</td>
-                              <td className="level-right">
-                                <a
-                                  className="button is-small is-primary"
-                                  href="#"
-                                >
-                                  Action
-                                </a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td width="5%">
-                                <i className="fa fa-bell-o"></i>
-                              </td>
-                              <td>Lorum ipsum dolem aire</td>
-                              <td className="level-right">
-                                <a
-                                  className="button is-small is-primary"
-                                  href="#"
-                                >
-                                  Action
-                                </a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td width="5%">
-                                <i className="fa fa-bell-o"></i>
-                              </td>
-                              <td>Lorum ipsum dolem aire</td>
-                              <td className="level-right">
-                                <a
-                                  className="button is-small is-primary"
-                                  href="#"
-                                >
-                                  Action
-                                </a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td width="5%">
-                                <i className="fa fa-bell-o"></i>
-                              </td>
-                              <td>Lorum ipsum dolem aire</td>
-                              <td className="level-right">
-                                <a
-                                  className="button is-small is-primary"
-                                  href="#"
-                                >
-                                  Action
-                                </a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td width="5%">
-                                <i className="fa fa-bell-o"></i>
-                              </td>
-                              <td>Lorum ipsum dolem aire</td>
-                              <td className="level-right">
-                                <a
-                                  className="button is-small is-primary"
-                                  href="#"
-                                >
-                                  Action
-                                </a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td width="5%">
-                                <i className="fa fa-bell-o"></i>
-                              </td>
-                              <td>Lorum ipsum dolem aire</td>
-                              <td className="level-right">
-                                <a
-                                  className="button is-small is-primary"
-                                  href="#"
-                                >
-                                  Action
-                                </a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td width="5%">
-                                <i className="fa fa-bell-o"></i>
-                              </td>
-                              <td>Lorum ipsum dolem aire</td>
-                              <td className="level-right">
-                                <a
-                                  className="button is-small is-primary"
-                                  href="#"
-                                >
-                                  Action
-                                </a>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                    <footer className="card-footer">
-                      <a href="#" className="card-footer-item">
-                        View All
-                      </a>
-                    </footer>
-                  </div>
-                </div>
-                <div className="column is-6">
-                  <div className="card">
-                    <header className="card-header">
-                      <p className="card-header-title">Inventory Search</p>
-                      <a
-                        href="#"
-                        className="card-header-icon"
-                        aria-label="more options"
-                      >
-                        <span className="icon">
-                          <i
-                            className="fa fa-angle-down"
-                            aria-hidden="true"
-                          ></i>
-                        </span>
-                      </a>
-                    </header>
-                    <div className="card-content">
-                      <div className="content">
-                        <div className="control has-icons-left has-icons-right">
-                          <input
-                            className="input is-large"
-                            type="text"
-                            placeholder=""
-                          />
-                          <span className="icon is-medium is-left">
-                            <i className="fa fa-search"></i>
-                          </span>
-                          <span className="icon is-medium is-right">
-                            <i className="fa fa-check"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="card">
-                    <header className="card-header">
-                      <p className="card-header-title">User Search</p>
-                      <a
-                        href="#"
-                        className="card-header-icon"
-                        aria-label="more options"
-                      >
-                        <span className="icon">
-                          <i
-                            className="fa fa-angle-down"
-                            aria-hidden="true"
-                          ></i>
-                        </span>
-                      </a>
-                    </header>
-                    <div className="card-content">
-                      <div className="content">
-                        <div className="control has-icons-left has-icons-right">
-                          <input
-                            className="input is-large"
-                            type="text"
-                            placeholder=""
-                          />
-                          <span className="icon is-medium is-left">
-                            <i className="fa fa-search"></i>
-                          </span>
-                          <span className="icon is-medium is-right">
-                            <i className="fa fa-check"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <Breadcrumb isDarkMode={isDarkMode} />
+              <Switch>
+                <Route path="/home" component={Home} />
+                <Route path="/explore" component={Explore} />
+                <Route path="/subscriptions" component={Subscriptions} />
+                <Route path="/library" component={Library} />
+                <Route path="/history" component={History} />
+                <Route path="/videos" component={Videos} />
+                <Route path="/movies" component={Movies} />
+                <Route path="/watch-later" component={WatchLater} />
+                <Redirect path="*" to={`/home`} />
+              </Switch>
             </div>
           </div>
         </div>
-        {/* <Switch>
-          <Route path="/license/:pkLicense" component={OverviewPage} />
-          <Redirect
-            path="*"
-            to={`/license/${licenseSelectedRedirect}/overview?cycle=${currentCycleId}`}
-          />
-        </Switch> */}
       </AppContainer>
     );
   }
