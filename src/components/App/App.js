@@ -30,7 +30,8 @@ class App extends React.Component {
   }
 
   render() {
-    const { isDarkMode } = this.props;
+    const { isDarkMode, popularVideos } = this.props;
+    console.log(popularVideos, 'spopularVideos');
     return (
       <AppContainer isDarkMode={isDarkMode}>
         <Navbar
@@ -347,12 +348,14 @@ class App extends React.Component {
 App.propTypes = {
   isDarkMode: PropTypes.bool.isRequired,
   setDarkMode: PropTypes.func,
-  fetchPopularVideos: PropTypes.func
+  fetchPopularVideos: PropTypes.func,
+  popularVideos: PropTypes.array
 };
 
 App.defaultProps = {
   setDarkMode: () => {},
-  fetchPopularVideos: () => {}
+  fetchPopularVideos: () => {},
+  popularVideos: []
 };
 
 export default App;

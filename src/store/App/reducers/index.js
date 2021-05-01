@@ -16,13 +16,10 @@ export const darkMode = (state = true, action) => {
 
 export const popularVideos = (state = [], action) => {
   switch (action.type) {
-    case at.FETCH_SUCCESS: {
-      return {
-        ...state,
-        popularList: action.popularList
-      };
+    case at.FETCH_SUCCESS_POPULAR_VIDEOS: {
+      return action.popularVideos;
     }
-    case at.FETCH_FAILURE: {
+    case at.FETCH_FAILURE_POPULAR_VIDEOS: {
       return {
         ...state,
         errorStatus: 'failed'
