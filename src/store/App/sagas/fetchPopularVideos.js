@@ -8,7 +8,7 @@ export default function* fetchPopularVideos({ params }) {
     const results = yield call(api.fetchPopularVideoList, params);
     yield put({
       type: at.FETCH_SUCCESS,
-      videoList: results
+      videoList: results.items
     });
   } catch (error) {
     yield put({ type: at.FETCH_FAILURE, error });

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import * as appStore from '../../store/app';
+import * as appStore from '../../store/videos';
 import App from '../../components/App';
 
 function mapStateToProps(state) {
