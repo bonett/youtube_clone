@@ -12,6 +12,14 @@ class App extends React.Component {
     this.changeThemeColor = this.changeThemeColor.bind(this);
   }
 
+  componentDidMount = () => {
+    const { fetchPopularVideos } = this.props;
+    const payload = {
+      query: 'apple'
+    };
+    fetchPopularVideos(payload);
+  };
+
   changeThemeColor() {
     const { isDarkMode, setDarkMode } = this.props;
     if (isDarkMode) {
@@ -31,10 +39,10 @@ class App extends React.Component {
         />
         <div className="container-fluid">
           <div className="columns">
-            <div className="column is-3 ">
-              <Sidebar />
+            <div className="column is-2">
+              <Sidebar isDarkMode={isDarkMode} />
             </div>
-            <div className="column is-9">
+            <div className="column is-10">
               <nav className="breadcrumb" aria-label="breadcrumbs">
                 <ul>
                   <li>
@@ -338,11 +346,13 @@ class App extends React.Component {
 
 App.propTypes = {
   isDarkMode: PropTypes.bool.isRequired,
-  setDarkMode: PropTypes.func
+  setDarkMode: PropTypes.func,
+  fetchPopularVideos: PropTypes.func
 };
 
 App.defaultProps = {
-  setDarkMode: () => {}
+  setDarkMode: () => {},
+  fetchPopularVideos: () => {}
 };
 
 export default App;

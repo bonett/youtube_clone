@@ -5,12 +5,15 @@ import App from '../../components/App';
 function mapStateToProps(state) {
   const appSelectors = appStore.selectors(state);
   const darkMode = appSelectors.getThemeApp();
+  const popularVideos = appSelectors.getPopularVideos();
 
   return {
-    isDarkMode: darkMode
+    isDarkMode: darkMode,
+    popularVideos
   };
 }
 
 export default connect(mapStateToProps, {
-  setDarkMode: appStore.actions.setDarkMode
+  setDarkMode: appStore.actions.setDarkMode,
+  fetchPopularVideos: appStore.actions.fetchPopularVideos
 })(App);

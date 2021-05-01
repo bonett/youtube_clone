@@ -1,11 +1,11 @@
 export default function (globalState) {
   const state = globalState.appReducer;
 
-  const getVideoList = () => state.videoList;
   const getThemeApp = () => state.darkMode;
+  const getPopularVideos = () => state.popularVideos;
 
   return {
-    getVideoList,
-    getThemeApp
+    getThemeApp,
+    getPopularVideos
   };
 }

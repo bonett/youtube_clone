@@ -1,73 +1,62 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Aside, Item } from './Sidebar.styled';
 
-function Sidebar() {
+function Sidebar({ isDarkMode }) {
   return (
-    <aside className="menu is-hidden-mobile">
-      <p className="menu-label">General</p>
+    <Aside className="menu is-hidden-mobile">
       <ul className="menu-list">
         <li>
-          <a className="is-active">Dashboard</a>
+          <Item class="is-active" isDarkMode={isDarkMode}>
+            {' '}
+            <i className="icon material-icons">home</i> Home
+          </Item>
         </li>
         <li>
-          <a>Customers</a>
+          <Item isDarkMode={isDarkMode}>
+            <i className="icon material-icons">explore</i> Explore
+          </Item>
         </li>
         <li>
-          <a>Other</a>
+          <Item isDarkMode={isDarkMode}>
+            <i className="icon material-icons">subscriptions</i> Subscriptions
+          </Item>
+        </li>
+        <hr />
+        <li>
+          <Item isDarkMode={isDarkMode}>
+            <i className="icon material-icons">video_library</i> Library
+          </Item>
+        </li>
+        <li>
+          <Item isDarkMode={isDarkMode}>
+            <i className="icon material-icons">history</i> History
+          </Item>
+        </li>
+        <li>
+          <Item isDarkMode={isDarkMode}>
+            <i className="icon material-icons">slideshow</i> Videos
+          </Item>
+        </li>
+        <li>
+          <Item isDarkMode={isDarkMode}>
+            <i className="icon material-icons">theaters</i> Movies
+          </Item>
+        </li>
+        <li>
+          <Item isDarkMode={isDarkMode}>
+            <i className="icon material-icons">watch_later</i> Watch later
+          </Item>
         </li>
       </ul>
-      <p className="menu-label">Administration</p>
-      <ul className="menu-list">
-        <li>
-          <a>Team Settings</a>
-        </li>
-        <li>
-          <a>Manage Your Team</a>
-          <ul>
-            <li>
-              <a>Members</a>
-            </li>
-            <li>
-              <a>Plugins</a>
-            </li>
-            <li>
-              <a>Add a member</a>
-            </li>
-            <li>
-              <a>Remove a member</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a>Invitations</a>
-        </li>
-        <li>
-          <a>Cloud Storage Environment Settings</a>
-        </li>
-        <li>
-          <a>Authentication</a>
-        </li>
-        <li>
-          <a>Payments</a>
-        </li>
-      </ul>
-      <p className="menu-label">Transactions</p>
-      <ul className="menu-list">
-        <li>
-          <a>Payments</a>
-        </li>
-        <li>
-          <a>Transfers</a>
-        </li>
-        <li>
-          <a>Balance</a>
-        </li>
-        <li>
-          <a>Reports</a>
-        </li>
-      </ul>
-    </aside>
+    </Aside>
   );
 }
+
+Sidebar.propTypes = {
+  isDarkMode: PropTypes.bool.isRequired
+};
+
+Sidebar.defaultProps = {};
 
 export default Sidebar;

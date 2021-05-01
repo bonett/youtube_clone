@@ -22,12 +22,14 @@ class Navbar extends React.Component {
   }
 
   componentDidMount = () => {
-    const burger = document.querySelector('.burger');
+    const { fetchVideos } = this.props;
+    fetchVideos();
+    /* const burger = document.querySelector('.burger');
     const menu = document.querySelector('#' + burger.dataset.target);
     burger.addEventListener('click', () => {
       burger.classList.toggle('is-active');
       menu.classList.toggle('is-active');
-    });
+    }); */
   };
 
   render() {
@@ -36,16 +38,6 @@ class Navbar extends React.Component {
     return (
       <NavigationBar className="navbar" isDarkMode={isDarkMode}>
         <div className="navbar-brand">
-          <a
-            role="button"
-            className="navbar-burger"
-            aria-label="menu"
-            aria-expanded="false"
-          >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
           <a className="navbar-item" href="https://bulma.io">
             <img
               src={!isDarkMode ? logoLight : logoDark}
@@ -54,7 +46,7 @@ class Navbar extends React.Component {
             />
           </a>
 
-          <a
+          {/* <a
             role="button"
             className="navbar-burger burger"
             aria-label="menu"
@@ -64,7 +56,7 @@ class Navbar extends React.Component {
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
-          </a>
+          </a> */}
         </div>
 
         <div id="navbarBasicExample" className="navbar-menu">
@@ -100,9 +92,9 @@ class Navbar extends React.Component {
                 </a>
                 <div className="navbar-end">
                   <div className="navbar-item has-dropdown is-hoverable">
-                    <a className="navbar-link photo">
+                    <div className="photo">
                       <UserPhoto src={defaultUser} />
-                    </a>
+                    </div>
 
                     <div className="navbar-dropdown is-right">
                       <Profile>
@@ -193,11 +185,13 @@ class Navbar extends React.Component {
 
 Navbar.propTypes = {
   isDarkMode: PropTypes.bool.isRequired,
-  onChangeToggle: PropTypes.func
+  onChangeToggle: PropTypes.func,
+  fetchVideos: PropTypes.func
 };
 
 Navbar.defaultProps = {
-  onChangeToggle: () => {}
+  onChangeToggle: () => {},
+  fetchVideos: () => {}
 };
 
 export default Navbar;

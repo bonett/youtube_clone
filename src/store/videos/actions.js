@@ -9,6 +9,7 @@ export const setDarkMode = (payload) => ({
   payload
 });
 
-export const fetch = () => ({
-  type: at.FETCH_REQUEST
+export const fetchPopularVideos = (payload) => ({
+  type: at.FETCH_POPULAR_VIDEOS,
+  payload
 });

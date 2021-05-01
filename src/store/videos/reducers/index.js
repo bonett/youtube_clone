@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import at from '../types';
 
-export const darkMode = (state = false, action) => {
+export const darkMode = (state = true, action) => {
   switch (action.type) {
     case at.GET_DARK_MODE: {
       return { ...state };
@@ -14,10 +14,19 @@ export const darkMode = (state = false, action) => {
   }
 };
 
-export const videoList = (state = [], action) => {
+export const popularVideos = (state = [], action) => {
   switch (action.type) {
-    case at.FETCH_REQUEST: {
-      return 'loading';
+    case at.FETCH_SUCCESS: {
+      return {
+        ...state,
+        popularList: action.popularList
+      };
+    }
+    case at.FETCH_FAILURE: {
+      return {
+        ...state,
+        errorStatus: 'failed'
+      };
     }
     default:
       return state;
@@ -26,5 +35,5 @@ export const videoList = (state = [], action) => {
 
 export default combineReducers({
   darkMode,
-  videoList
+  popularVideos
 });

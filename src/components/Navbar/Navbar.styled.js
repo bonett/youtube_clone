@@ -15,17 +15,18 @@ export const NavigationBar = styled(({ ...rest }) => <nav {...rest} />)`
         margin: 0 14px;
       }
     }
+
     .navbar-item {
       a {
         i {
           color: ${!isDarkMode ? theme.color.text : theme.color.light};
           font-size: 1.6em;
         }
-
-        &.photo {
-          padding-left: 0;
-        }
       }
+    }
+
+    .photo {
+      padding: 4px 14px;
     }
 
     .navbar-dropdown {
