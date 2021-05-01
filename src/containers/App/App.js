@@ -6,14 +6,17 @@ function mapStateToProps(state) {
   const appSelectors = appStore.selectors(state);
   const darkMode = appSelectors.getThemeApp();
   const popularVideos = appSelectors.getPopularVideos();
+  const userSubscription = appSelectors.getUserSubscription();
 
   return {
     isDarkMode: darkMode,
-    popularVideos
+    popularVideos,
+    userSubscription
   };
 }
 
 export default connect(mapStateToProps, {
   setDarkMode: appStore.actions.setDarkMode,
+  setUserSubscription: appStore.actions.setUserSubscription,
   fetchPopularVideos: appStore.actions.fetchPopularVideos
 })(App);

@@ -14,6 +14,19 @@ export const darkMode = (state = true, action) => {
   }
 };
 
+export const userSubscription = (state = false, action) => {
+  switch (action.type) {
+    case at.GET_USER_SUBSCRIPTION: {
+      return { ...state };
+    }
+    case at.SET_USER_SUBSCRIPTION: {
+      return action.payload;
+    }
+    default:
+      return state;
+  }
+};
+
 export const popularVideos = (state = [], action) => {
   switch (action.type) {
     case at.FETCH_SUCCESS_POPULAR_VIDEOS: {
@@ -32,5 +45,6 @@ export const popularVideos = (state = [], action) => {
 
 export default combineReducers({
   darkMode,
-  popularVideos
+  popularVideos,
+  userSubscription
 });

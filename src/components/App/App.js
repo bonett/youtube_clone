@@ -20,21 +20,38 @@ class App extends React.Component {
     super(props);
     this.state = {
       openSidebar: false,
-      isShowBanner: true
+      showBanner: true
     };
     this.changeThemeColor = this.changeThemeColor.bind(this);
     this.switchPageByName = this.switchPageByName.bind(this);
     this.handleSidebar = this.handleSidebar.bind(this);
     this.handleCloseBanner = this.handleCloseBanner.bind(this);
+    this.acceptSubscription = this.acceptSubscription.bind(this);
   }
 
   componentDidMount = () => {
-    const { fetchPopularVideos } = this.props;
+    const { fetchPopularVideos, userSubscription } = this.props;
     const payload = {
       query: 'apple'
     };
+
+    if (!userSubscription) {
+      this.setState({
+        showBanner: true
+      });
+    }
+
     fetchPopularVideos(payload);
   };
+
+  componentDidUpdate(prevProps) {
+    const { userSubscription } = this.props;
+    if (prevProps.userSubscription !== userSubscription) {
+      this.setState({
+        openSidebar: false
+      });
+    }
+  }
 
   handleSidebar() {
     const { openSidebar } = this.state;
@@ -44,10 +61,17 @@ class App extends React.Component {
   }
 
   handleCloseBanner() {
-    const { isShowBanner } = this.state;
     this.setState({
-      isShowBanner: !isShowBanner
+      showBanner: false
     });
+  }
+
+  acceptSubscription() {
+    const { setUserSubscription } = this.props;
+    this.setState({
+      showBanner: false
+    });
+    setUserSubscription(true);
   }
 
   changeThemeColor() {
@@ -66,7 +90,7 @@ class App extends React.Component {
 
   render() {
     const { isDarkMode } = this.props;
-    const { openSidebar, isShowBanner } = this.state;
+    const { openSidebar, showBanner } = this.state;
 
     return (
       <AppContainer isDarkMode={isDarkMode}>
@@ -85,10 +109,15 @@ class App extends React.Component {
               />
             </Aside>
             <Wrapper>
-              {/*   <Breadcrumb isDarkMode={isDarkMode} /> */}
               <React.Fragment>
-                {isShowBanner && (
-                  <Banner handleCloseBanner={this.handleCloseBanner} />
+                <Breadcrumb isDarkMode={isDarkMode} />
+              </React.Fragment>
+              <React.Fragment>
+                {showBanner && (
+                  <Banner
+                    handleCloseBanner={this.handleCloseBanner}
+                    acceptSubscription={this.acceptSubscription}
+                  />
                 )}
               </React.Fragment>
               <Switch>
@@ -112,13 +141,16 @@ class App extends React.Component {
 
 App.propTypes = {
   isDarkMode: PropTypes.bool.isRequired,
+  userSubscription: PropTypes.bool.isRequired,
   setDarkMode: PropTypes.func,
+  setUserSubscription: PropTypes.func,
   fetchPopularVideos: PropTypes.func,
   history: PropTypes.object
 };
 
 App.defaultProps = {
   setDarkMode: () => {},
+  setUserSubscription: () => {},
   fetchPopularVideos: () => {},
   history: {}
 };

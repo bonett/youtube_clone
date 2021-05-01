@@ -9,6 +9,15 @@ export const setDarkMode = (payload) => ({
   payload
 });
 
+export const getUserSubscription = () => ({
+  type: at.GET_USER_SUBSCRIPTION
+});
+
+export const setUserSubscription = (payload) => ({
+  type: at.SET_USER_SUBSCRIPTION,
+  payload
+});
+
 export const fetchPopularVideos = (payload) => ({
   type: at.FETCH_POPULAR_VIDEOS,
   payload

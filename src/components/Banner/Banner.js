@@ -10,7 +10,7 @@ import {
   AcceptSubscription
 } from './Banner.styled';
 import LogoBanner from '../../static/images/logo-banner.png';
-function Banner({ handleCloseBanner }) {
+function Banner({ handleCloseBanner, acceptSubscription }) {
   return (
     <BannerSection class="notification">
       <Wrapper>
@@ -20,7 +20,9 @@ function Banner({ handleCloseBanner }) {
         <Message>
           <Logo src={LogoBanner} />
           <Text>Explore music based on your unique taste</Text>
-          <AcceptSubscription>1 month free</AcceptSubscription>
+          <AcceptSubscription type="button" onClick={acceptSubscription}>
+            1 month free
+          </AcceptSubscription>
         </Message>
       </Wrapper>
     </BannerSection>
@@ -28,11 +30,13 @@ function Banner({ handleCloseBanner }) {
 }
 
 Banner.propTypes = {
-  handleCloseBanner: PropTypes.func
+  handleCloseBanner: PropTypes.func,
+  acceptSubscription: PropTypes.func
 };
 
 Banner.defaultProps = {
-  handleCloseBanner: () => {}
+  handleCloseBanner: () => {},
+  acceptSubscription: () => {}
 };
 
 export default Banner;

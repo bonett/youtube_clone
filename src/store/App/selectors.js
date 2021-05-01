@@ -3,9 +3,11 @@ export default function (globalState) {
 
   const getThemeApp = () => state.darkMode;
   const getPopularVideos = () => state.popularVideos;
+  const getUserSubscription = () => state.userSubscription;
 
   return {
     getThemeApp,
-    getPopularVideos
+    getPopularVideos,
+    getUserSubscription
   };
 }

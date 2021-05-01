@@ -77,6 +77,7 @@ export const AcceptSubscription = styled(({ ...rest }) => <button {...rest} />)`
     width: 150px;
     text-transform: uppercase;
     margin: 50px 0 0 0;
+    cursor: pointer;
   `}
 `;
 
