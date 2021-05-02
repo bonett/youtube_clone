@@ -35,16 +35,22 @@ class Navbar extends React.Component {
     const { fetchVideos } = this.props;
     const { openSidebar } = this.state;
 
-    this.handleEffectSidebar(!openSidebar);
+    if (window.location.pathname === '/home') {
+      this.handleEffectSidebar(!openSidebar);
+    } else {
+      this.handleEffectSidebar(openSidebar);
+    }
 
     fetchVideos();
   };
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.pathname !== 'home') {
-      this.handleEffectSidebar(false);
+  componentDidUpdate() {
+    const { openSidebar } = this.state;
+
+    if (window.location.pathname === '/home') {
+      this.handleEffectSidebar(!openSidebar);
     } else {
-      this.handleEffectSidebar(true);
+      this.handleEffectSidebar(openSidebar);
     }
   }
 
