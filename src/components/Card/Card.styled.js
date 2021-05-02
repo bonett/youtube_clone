@@ -11,12 +11,25 @@ export const Card = styled(({ ...rest }) => <div {...rest} />)`
     justify-content: flex-start;
     align-items: center;
     padding: 0;
+
+    &.recommended {
+      display: flex;
+      flex-flow: row;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      box-shadow: none;
+    }
   `}
 `;
 
 export const Cover = styled(({ ...rest }) => <div {...rest} />)`
   ${() => css`
     width: 100% !important;
+
+    &.cover {
+      padding: 4px;
+    }
 
     img,
     iframe {
@@ -33,6 +46,22 @@ export const Info = styled(({ ...rest }) => <div {...rest} />)`
     width: 100%;
     height: 180px;
     min-height: 180px;
+
+    &.info-recommended {
+      padding: 8px;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: flex-start;
+
+      h4 {
+        font-size: 0.9em;
+      }
+
+      h6 {
+        font-size: 0.9em;
+      }
+    }
   `}
 `;
 

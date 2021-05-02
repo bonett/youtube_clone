@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 export const CommingSoonWrapper = styled(({ ...rest }) => <div {...rest} />)`
   ${() => css`
-    height: 58vh;
+    height: 100vh;
     width: 100%;
   `}
 `;

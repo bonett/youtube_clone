@@ -61,7 +61,7 @@ class App extends React.Component {
         <main>
           <div className="container-fluid">
             <Content>
-              <Aside>
+              <Aside id="asideId">
                 <Sidebar
                   pathname={pathname}
                   isDarkMode={isDarkMode}
@@ -69,7 +69,7 @@ class App extends React.Component {
                   handleClickPage={this.switchPageByName}
                 />
               </Aside>
-              <Wrapper>
+              <Wrapper id="main-content">
                 <Switch>
                   <Route path="/home" component={Home} />
                   <Route path="/watch/:id" component={Details} />

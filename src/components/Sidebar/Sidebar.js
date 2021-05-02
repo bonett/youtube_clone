@@ -106,7 +106,7 @@ Sidebar.propTypes = {
   isDarkMode: PropTypes.bool.isRequired,
   /* openSidebar: PropTypes.bool.isRequired, */
   handleClickPage: PropTypes.func,
-  pathname: PropTypes.object
+  pathname: PropTypes.string
 };
 
 Sidebar.defaultProps = {

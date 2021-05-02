@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CardVideo from '../Card/Card';
+import CardVideo from '../Card';
 import { HomeSection, Columns } from './Home.styled';
 import Breadcrumb from '../../components/Breadcrumb';
 import Banner from '../../components/Banner';
