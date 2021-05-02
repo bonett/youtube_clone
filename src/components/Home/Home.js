@@ -8,7 +8,7 @@ import Loader from '../../components/Loader';
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { showBanner: false };
+    this.state = { showBanner: true };
     this.handleCloseBanner = this.handleCloseBanner.bind(this);
     this.viewDetailsPage = this.viewDetailsPage.bind(this);
     this.acceptSubscription = this.acceptSubscription.bind(this);
@@ -29,15 +29,17 @@ class Home extends React.Component {
   }
 
   handleCloseBanner() {
+    const { setUserSubscription } = this.props;
     this.setState({
-      showBanner: true
+      showBanner: false
     });
+    setUserSubscription(false);
   }
 
   acceptSubscription() {
     const { setUserSubscription } = this.props;
     this.setState({
-      showBanner: true
+      showBanner: false
     });
     setUserSubscription(true);
   }
@@ -46,13 +48,16 @@ class Home extends React.Component {
     const {
       isdarkmode,
       popularVideos,
-      userSubscription,
-      isloading
+      isloading,
+      userSubscription
     } = this.props;
+    const { showBanner } = this.state;
+    const show = showBanner && !userSubscription;
+
     return (
       <React.Fragment>
         <Banner
-          showBanner={userSubscription}
+          showBanner={show}
           handleCloseBanner={this.handleCloseBanner}
           acceptSubscription={this.acceptSubscription}
         />

@@ -13,7 +13,7 @@ import LogoBanner from '../../static/images/logo-banner.png';
 function Banner({ handleCloseBanner, acceptSubscription, showBanner }) {
   return (
     <React.Fragment>
-      {!showBanner && (
+      {showBanner && (
         <BannerSection className="notification">
           <Wrapper>
             <Close className="material-icons" onClick={handleCloseBanner}>
