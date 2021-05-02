@@ -24,12 +24,39 @@ class App extends React.Component {
     this.switchPageByName = this.switchPageByName.bind(this);
     this.handleEffectSidebar = this.handleEffectSidebar.bind(this);
     this.handleSidebar = this.handleSidebar.bind(this);
+    this.reportWindowSize = this.reportWindowSize.bind(this);
+    this.desktopSidebar = this.desktopSidebar.bind(this);
+    this.mobileSidebar = this.mobileSidebar.bind(this);
   }
 
-  componentDidMount() {
+  reportWindowSize() {
+    if (window.innerWidth < 992) {
+      this.mobileSidebar();
+    } else {
+      this.desktopSidebar();
+    }
+  }
+
+  mobileSidebar() {
+    document.getElementById('mySidenav').style.width = '80px';
+    document.getElementById('main').style.marginLeft = '80px';
+    document.getElementById('mySidenav').style.overflow = 'auto';
+  }
+
+  desktopSidebar() {
     document.getElementById('mySidenav').style.width = '250px';
     document.getElementById('main').style.marginLeft = '250px';
     document.getElementById('mySidenav').style.overflow = 'auto';
+  }
+
+  componentDidMount() {
+    if (window.innerWidth < 992) {
+      this.mobileSidebar();
+    } else {
+      this.desktopSidebar();
+    }
+
+    window.addEventListener('resize', this.reportWindowSize);
   }
 
   handleSidebar() {
@@ -48,9 +75,11 @@ class App extends React.Component {
       document.getElementById('mySidenav').style.overflow = 'hidden';
       document.getElementById('main').style.marginLeft = '0';
     } else {
-      document.getElementById('mySidenav').style.width = '250px';
-      document.getElementById('main').style.marginLeft = '250px';
-      document.getElementById('mySidenav').style.overflow = 'auto';
+      if (window.innerWidth < 768) {
+        this.mobileSidebar();
+      } else {
+        this.desktopSidebar();
+      }
     }
   }
 
@@ -82,6 +111,7 @@ class App extends React.Component {
     return (
       <AppContainer isdarkmode={isdarkmode}>
         <Navbar
+          switchPageByName={this.switchPageByName}
           pathname={pathname}
           fetchPopularVideos={fetchPopularVideos}
           handleSidebar={this.handleSidebar}

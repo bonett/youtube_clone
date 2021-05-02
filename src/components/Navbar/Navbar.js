@@ -40,12 +40,13 @@ class Navbar extends React.Component {
   }
 
   searchData(e) {
-    const { fetchPopularVideos, setQueryType } = this.props;
+    const { fetchPopularVideos, setQueryType, switchPageByName } = this.props;
     const { value } = this.state;
 
     if (e.keyCode === 13) {
       setQueryType(value);
       fetchPopularVideos(value);
+      switchPageByName('home');
     }
   }
 
@@ -185,14 +186,16 @@ Navbar.propTypes = {
   fetchPopularVideos: PropTypes.func,
   pathname: PropTypes.any,
   queryType: PropTypes.string,
-  setQueryType: PropTypes.func
+  setQueryType: PropTypes.func,
+  switchPageByName: PropTypes.func
 };
 
 Navbar.defaultProps = {
   onChangeToggle: () => {},
   handleSidebar: () => {},
   fetchPopularVideos: () => {},
-  setQueryType: () => {}
+  setQueryType: () => {},
+  switchPageByName: () => {}
 };
 
 export default Navbar;
