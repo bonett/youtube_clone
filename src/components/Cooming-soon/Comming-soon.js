@@ -8,15 +8,15 @@ import {
   Button
 } from './Comming-soon.styled';
 
-function CommingSoon({ isDarkMode, redirectHome }) {
+function CommingSoon({ isdarkmode, redirectHome }) {
   return (
-    <CommingSoonWrapper isDarkMode={isDarkMode}>
+    <CommingSoonWrapper isdarkmode={isdarkmode}>
       <Wrapper>
-        <Icon isDarkMode={isDarkMode} className="material-icons">
+        <Icon isdarkmode={isdarkmode} className="material-icons">
           wifi_off
         </Icon>
-        <Text isDarkMode={isDarkMode}>Section not available</Text>
-        <Button isDarkMode={isDarkMode} type="button" onClick={redirectHome}>
+        <Text isdarkmode={isdarkmode}>Section not available</Text>
+        <Button isdarkmode={isdarkmode} type="button" onClick={redirectHome}>
           {' '}
           Back to Home
         </Button>
@@ -26,7 +26,7 @@ function CommingSoon({ isDarkMode, redirectHome }) {
 }
 
 CommingSoon.propTypes = {
-  isDarkMode: PropTypes.bool.isRequired,
+  isdarkmode: PropTypes.bool.isRequired,
   redirectHome: PropTypes.func
 };
 

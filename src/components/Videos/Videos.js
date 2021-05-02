@@ -3,20 +3,20 @@ import PropTypes from 'prop-types';
 import CommingSoon from '../Cooming-soon/Comming-soon';
 import { VideosSection } from './Videos.styled';
 
-function Videos({ isDarkMode, history }) {
+function Videos({ isdarkmode, history }) {
   const redirectToHome = () => {
     history.push('/');
   };
 
   return (
-    <VideosSection isDarkMode={isDarkMode}>
-      <CommingSoon isDarkMode={isDarkMode} redirectHome={redirectToHome} />
+    <VideosSection isdarkmode={isdarkmode}>
+      <CommingSoon isdarkmode={isdarkmode} redirectHome={redirectToHome} />
     </VideosSection>
   );
 }
 
 Videos.propTypes = {
-  isDarkMode: PropTypes.bool.isRequired,
+  isdarkmode: PropTypes.bool.isRequired,
   history: PropTypes.object
 };
 

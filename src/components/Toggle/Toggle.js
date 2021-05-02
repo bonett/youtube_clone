@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Wrapper, Switch, Slide, Round } from './Toggle.styled';
 
-function Toggle({ isDarkMode, onChangeToggle }) {
+function Toggle({ isdarkmode, onChangeToggle }) {
   return (
-    <Wrapper isDarkMode={isDarkMode}>
+    <Wrapper isdarkmode={isdarkmode}>
       <Switch>
         <Slide
           type="checkbox"
-          defaultChecked={isDarkMode}
+          defaultChecked={isdarkmode}
           onChange={onChangeToggle}
         />
         <Round className="slider circle"></Round>
@@ -18,7 +18,7 @@ function Toggle({ isDarkMode, onChangeToggle }) {
 }
 
 Toggle.propTypes = {
-  isDarkMode: PropTypes.bool.isRequired,
+  isdarkmode: PropTypes.bool.isRequired,
   onChangeToggle: PropTypes.func
 };
 

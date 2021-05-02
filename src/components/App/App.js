@@ -18,23 +18,45 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      openSidebar: false
+      openSidebar: true
     };
     this.changeThemeColor = this.changeThemeColor.bind(this);
     this.switchPageByName = this.switchPageByName.bind(this);
+    this.handleEffectSidebar = this.handleEffectSidebar.bind(this);
     this.handleSidebar = this.handleSidebar.bind(this);
+  }
+
+  componentDidMount() {
+    document.getElementById('mySidenav').style.width = '250px';
+    document.getElementById('main').style.marginLeft = '250px';
+    document.getElementById('mySidenav').style.overflow = 'auto';
   }
 
   handleSidebar() {
     const { openSidebar } = this.state;
+
     this.setState({
       openSidebar: !openSidebar
     });
+
+    this.handleEffectSidebar(openSidebar);
+  }
+
+  handleEffectSidebar(status) {
+    if (status) {
+      document.getElementById('mySidenav').style.width = '0';
+      document.getElementById('mySidenav').style.overflow = 'hidden';
+      document.getElementById('main').style.marginLeft = '0';
+    } else {
+      document.getElementById('mySidenav').style.width = '250px';
+      document.getElementById('main').style.marginLeft = '250px';
+      document.getElementById('mySidenav').style.overflow = 'auto';
+    }
   }
 
   changeThemeColor() {
-    const { isDarkMode, setDarkMode } = this.props;
-    if (isDarkMode) {
+    const { isdarkmode, setDarkMode } = this.props;
+    if (isdarkmode) {
       setDarkMode(false);
     } else {
       setDarkMode(true);
@@ -47,17 +69,17 @@ class App extends React.Component {
   }
 
   render() {
-    const { isDarkMode, location } = this.props;
+    const { isdarkmode, location } = this.props;
     const { openSidebar } = this.state;
     const { pathname } = location;
 
     return (
-      <AppContainer isDarkMode={isDarkMode}>
+      <AppContainer isdarkmode={isdarkmode}>
         <Navbar
           pathname={pathname}
           handleSidebar={this.handleSidebar}
           onChangeToggle={this.changeThemeColor}
-          isDarkMode={isDarkMode}
+          isdarkmode={isdarkmode}
         />
         <main>
           <div className="container-fluid">
@@ -65,12 +87,12 @@ class App extends React.Component {
               <Aside id="asideId">
                 <Sidebar
                   pathname={pathname}
-                  isDarkMode={isDarkMode}
+                  isdarkmode={isdarkmode}
                   openSidebar={openSidebar}
                   handleClickPage={this.switchPageByName}
                 />
               </Aside>
-              <Wrapper id="main">
+              <Wrapper isdarkmode={isdarkmode} id="main">
                 <Switch>
                   <Route path="/home" component={Home} />
                   <Route path="/watch/:id" component={Details} />
@@ -93,7 +115,7 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  isDarkMode: PropTypes.bool.isRequired,
+  isdarkmode: PropTypes.bool.isRequired,
   setDarkMode: PropTypes.func,
   location: PropTypes.object,
   history: PropTypes.object

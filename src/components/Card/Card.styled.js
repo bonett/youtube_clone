@@ -2,10 +2,10 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 export const Card = styled(({ ...rest }) => <div {...rest} />)`
-  ${({ theme, isDarkMode }) => css`
+  ${({ theme, isdarkmode }) => css`
     margin: 4px;
     width: 100%;
-    box-shadow: ${!isDarkMode ? theme.boxShadow.light : theme.boxShadow.dark};
+    box-shadow: ${!isdarkmode ? theme.boxShadow.light : theme.boxShadow.dark};
     display: flex;
     flex-flow: column;
     justify-content: flex-start;
@@ -14,7 +14,7 @@ export const Card = styled(({ ...rest }) => <div {...rest} />)`
     cursor: pointer;
 
     &:hover {
-      background-color: ${isDarkMode ? '#2f2f2f' : '#e0e0e0'} !important;
+      background-color: ${isdarkmode ? '#2f2f2f' : '#e0e0e0'} !important;
     }
 
     &.recommended {
@@ -25,25 +25,25 @@ export const Card = styled(({ ...rest }) => <div {...rest} />)`
       align-items: center;
       margin: 0;
       padding: 8px;
-      background-color: ${!isDarkMode ? '#fff' : '#1f1f1f'};
+      background-color: ${!isdarkmode ? '#fff' : '#1f1f1f'};
       box-shadow: none;
-      border-bottom: 1px solid ${!isDarkMode ? '#dedede' : '#3a3a3a'};
+      border-bottom: 1px solid ${!isdarkmode ? '#dedede' : '#3a3a3a'};
 
       &:last-child {
         border-bottom: none;
       }
 
       &:hover {
-        background-color: ${isDarkMode ? '#2f2f2f' : '#e0e0e0'} !important;
+        background-color: ${isdarkmode ? '#2f2f2f' : '#e0e0e0'} !important;
       }
     }
   `}
 `;
 
 export const Cover = styled(({ ...rest }) => <div {...rest} />)`
-  ${({ isDarkMode }) => css`
+  ${({ isdarkmode }) => css`
     width: 100% !important;
-    background-color: ${!isDarkMode ? '#fff' : '#131313'};
+    background-color: ${!isdarkmode ? '#fff' : '#131313'};
 
     &.cover {
       padding: 0;
@@ -83,8 +83,8 @@ export const Info = styled(({ ...rest }) => <div {...rest} />)`
 `;
 
 export const Title = styled(({ ...rest }) => <h4 {...rest} />)`
-  ${({ theme, isDarkMode }) => css`
-    color: ${!isDarkMode ? theme.color.text : theme.color.light};
+  ${({ theme, isdarkmode }) => css`
+    color: ${!isdarkmode ? theme.color.text : theme.color.light};
     font-weight: 800;
   `}
 `;
@@ -99,22 +99,22 @@ export const Details = styled(({ ...rest }) => <div {...rest} />)`
   `}
 `;
 export const ChannelTitle = styled(({ ...rest }) => <h6 {...rest} />)`
-  ${({ theme, isDarkMode }) => css`
-    color: ${!isDarkMode ? theme.color.text : theme.color.light};
+  ${({ theme, isdarkmode }) => css`
+    color: ${!isdarkmode ? theme.color.text : theme.color.light};
     font-weight: 400;
     font-size: 0.9em;
     margin-bottom: 10px;
 
     span {
       font-size: 0.9em;
-      color: ${!isDarkMode ? theme.color.text : theme.color.light};
+      color: ${!isdarkmode ? theme.color.text : theme.color.light};
     }
   `}
 `;
 
 export const DateSince = styled(({ ...rest }) => <h6 {...rest} />)`
-  ${({ theme, isDarkMode }) => css`
-    color: ${!isDarkMode ? theme.color.text : theme.color.light};
+  ${({ theme, isdarkmode }) => css`
+    color: ${!isdarkmode ? theme.color.text : theme.color.light};
     font-weight: 400;
     font-size: 0.9em;
   `}

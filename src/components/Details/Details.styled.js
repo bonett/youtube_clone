@@ -2,11 +2,11 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 export const DetailsWrapper = styled(({ ...rest }) => <div {...rest} />)`
-  ${({ isDarkMode }) => css`
+  ${({ isdarkmode }) => css`
     height: 100vh;
     width: 100%;
     padding: 20px 10px;
-    background-color: ${!isDarkMode ? '#f5f5f5' : '#131313'};
+    background-color: ${!isdarkmode ? '#f5f5f5' : '#131313'};
 
     iframe {
       width: 100%;
@@ -38,8 +38,8 @@ export const Video = styled(({ ...rest }) => <div {...rest} />)`
 `;
 
 export const List = styled(({ ...rest }) => <div {...rest} />)`
-  ${({ theme, isDarkMode }) => css`
-    background-color: ${!isDarkMode ? '#f5f5f5' : '#131313'};
+  ${({ theme, isdarkmode }) => css`
+    background-color: ${!isdarkmode ? '#f5f5f5' : '#131313'};
     width: 30%;
     min-height: 800px;
     max-height: 800px;
@@ -55,12 +55,12 @@ export const List = styled(({ ...rest }) => <div {...rest} />)`
     h4 {
       font-size: 1.2em;
       font-weight: 400;
-      color: ${!isDarkMode ? theme.color.text : theme.color.light};
+      color: ${!isdarkmode ? theme.color.text : theme.color.light};
     }
 
     .list {
       overflow-y: scroll;
-      border: 1px solid ${!isDarkMode ? '#dedede' : '#3a3a3a'};
+      border: 1px solid ${!isdarkmode ? '#dedede' : '#3a3a3a'};
       align-items: flex-start;
       display: flex;
       flex-direction: column;
@@ -70,9 +70,9 @@ export const List = styled(({ ...rest }) => <div {...rest} />)`
 `;
 
 export const Name = styled(({ ...rest }) => <h2 {...rest} />)`
-  ${({ theme, isDarkMode }) => css`
+  ${({ theme, isdarkmode }) => css`
     width: 100%;
-    color: ${!isDarkMode ? theme.color.text : theme.color.light};
+    color: ${!isdarkmode ? theme.color.text : theme.color.light};
     height: 60px;
     align-items: center;
     font-size: 1.4em;
@@ -89,9 +89,9 @@ export const Name = styled(({ ...rest }) => <h2 {...rest} />)`
 `;
 
 export const Description = styled(({ ...rest }) => <p {...rest} />)`
-  ${({ theme, isDarkMode }) => css`
+  ${({ theme, isdarkmode }) => css`
     width: 100%;
-    color: ${!isDarkMode ? theme.color.text : theme.color.light};
+    color: ${!isdarkmode ? theme.color.text : theme.color.light};
     align-items: center;
     font-size: 1em;
     font-weight: 300;
@@ -102,9 +102,9 @@ export const Description = styled(({ ...rest }) => <p {...rest} />)`
 `;
 
 export const Publisher = styled(({ ...rest }) => <h5 {...rest} />)`
-  ${({ theme, isDarkMode }) => css`
+  ${({ theme, isdarkmode }) => css`
     width: 100%;
-    color: ${!isDarkMode ? theme.color.text : theme.color.light};
+    color: ${!isdarkmode ? theme.color.text : theme.color.light};
     align-items: center;
     margin-top: 20px;
     font-size: 0.9em;
@@ -121,9 +121,9 @@ export const Publisher = styled(({ ...rest }) => <h5 {...rest} />)`
 `;
 
 export const DatePublished = styled(({ ...rest }) => <h5 {...rest} />)`
-  ${({ theme, isDarkMode }) => css`
+  ${({ theme, isdarkmode }) => css`
     width: 100%;
-    color: ${!isDarkMode ? theme.color.text : theme.color.light};
+    color: ${!isdarkmode ? theme.color.text : theme.color.light};
     align-items: center;
     margin-top: 10px;
     font-size: 0.9em;

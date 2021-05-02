@@ -2,20 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ExploreSection } from './Explore.styled';
 import CommingSoon from '../Cooming-soon/Comming-soon';
-function Explore({ isDarkMode, history }) {
+function Explore({ isdarkmode, history }) {
   const redirectToHome = () => {
     history.push('/');
   };
 
   return (
-    <ExploreSection isDarkMode={isDarkMode}>
-      <CommingSoon isDarkMode={isDarkMode} redirectHome={redirectToHome} />
+    <ExploreSection isdarkmode={isdarkmode}>
+      <CommingSoon isdarkmode={isdarkmode} redirectHome={redirectToHome} />
     </ExploreSection>
   );
 }
 
 Explore.propTypes = {
-  isDarkMode: PropTypes.bool.isRequired,
+  isdarkmode: PropTypes.bool.isRequired,
   history: PropTypes.object
 };
 

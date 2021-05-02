@@ -10,7 +10,7 @@ function mapStateToProps(state) {
   const queryType = appSelectors.getQueryType();
 
   return {
-    isDarkMode: darkMode,
+    isdarkmode: darkMode,
     popularVideos: apiResult.value,
     userSubscription,
     queryType

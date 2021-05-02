@@ -2,20 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CommingSoon from '../Cooming-soon/Comming-soon';
 import { HistorySection } from './History.styled';
-function History({ isDarkMode, history }) {
+function History({ isdarkmode, history }) {
   const redirectToHome = () => {
     history.push('/');
   };
 
   return (
-    <HistorySection isDarkMode={isDarkMode}>
-      <CommingSoon isDarkMode={isDarkMode} redirectHome={redirectToHome} />
+    <HistorySection isdarkmode={isdarkmode}>
+      <CommingSoon isdarkmode={isdarkmode} redirectHome={redirectToHome} />
     </HistorySection>
   );
 }
 
 History.propTypes = {
-  isDarkMode: PropTypes.bool.isRequired,
+  isdarkmode: PropTypes.bool.isRequired,
   history: PropTypes.object
 };
 

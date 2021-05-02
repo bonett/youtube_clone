@@ -7,7 +7,7 @@ function mapStateToProps(state) {
   const darkMode = appSelectors.getThemeApp();
 
   return {
-    isDarkMode: darkMode
+    isdarkmode: darkMode
   };
 }
 

@@ -12,7 +12,7 @@ import {
 } from './Details.styled';
 import CardVideo from '../Card';
 import utils from '../../utils';
-function Details({ isDarkMode, videoDetails, history, videosRecommended }) {
+function Details({ isdarkmode, videoDetails, history, videosRecommended }) {
   const channelTitle =
     videoDetails.publisher[videoDetails.publisher.length - 1].name;
 
@@ -35,37 +35,37 @@ function Details({ isDarkMode, videoDetails, history, videosRecommended }) {
   };
 
   return (
-    <DetailsWrapper isDarkMode={isDarkMode}>
+    <DetailsWrapper isdarkmode={isdarkmode}>
       <Content>
         <Video id="parent">
           <iframe src={getUrlIframe(videoDetails)}></iframe>
           <Name
-            isDarkMode={isDarkMode}
+            isdarkmode={isdarkmode}
             onClick={() => openUrl(videoDetails.webSearchUrl)}
           >
             {videoDetails.name}
           </Name>
-          <Description isDarkMode={isDarkMode}>
+          <Description isdarkmode={isdarkmode}>
             {videoDetails.description}
           </Description>
           <Publisher
-            isDarkMode={isDarkMode}
+            isdarkmode={isdarkmode}
             onClick={() => openUrl(videoDetails.hostPageUrl)}
           >
             {channelTitle} <span className="material-icons">verified</span>
           </Publisher>
-          <DatePublished isDarkMode={isDarkMode}>
+          <DatePublished isdarkmode={isdarkmode}>
             {utils.getDateDiff(videoDetails.datePublished)}
           </DatePublished>
         </Video>
-        <List isDarkMode={isDarkMode}>
+        <List isdarkmode={isdarkmode}>
           <h4 className="title">Recommended List</h4>
           <div className="list">
             {videosRecommended.map((recommended) => {
               return (
                 <CardVideo
                   key={recommended.videoId}
-                  isDarkMode={isDarkMode}
+                  isdarkmode={isdarkmode}
                   video={recommended}
                   handleClickCard={viewDetailsPage}
                   recommendedSection={true}
@@ -80,7 +80,7 @@ function Details({ isDarkMode, videoDetails, history, videosRecommended }) {
 }
 
 Details.propTypes = {
-  isDarkMode: PropTypes.bool.isRequired,
+  isdarkmode: PropTypes.bool.isRequired,
   videoDetails: PropTypes.object,
   videosRecommended: PropTypes.array,
   history: PropTypes.object

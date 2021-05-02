@@ -51,7 +51,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const { isDarkMode, popularVideos, userSubscription } = this.props;
+    const { isdarkmode, popularVideos, userSubscription } = this.props;
 
     return (
       <React.Fragment>
@@ -60,13 +60,13 @@ class Home extends React.Component {
           handleCloseBanner={this.handleCloseBanner}
           acceptSubscription={this.acceptSubscription}
         />
-        <HomeSection isDarkMode={isDarkMode}>
+        <HomeSection isdarkmode={isdarkmode}>
           <Columns>
             {popularVideos.map((video) => {
               return (
                 <CardVideo
                   key={video.videoId}
-                  isDarkMode={isDarkMode}
+                  isdarkmode={isdarkmode}
                   video={video}
                   handleClickCard={this.viewDetailsPage}
                 />
@@ -80,7 +80,7 @@ class Home extends React.Component {
 }
 
 Home.propTypes = {
-  isDarkMode: PropTypes.bool.isRequired,
+  isdarkmode: PropTypes.bool.isRequired,
   popularVideos: PropTypes.any,
   history: PropTypes.object,
   userSubscription: PropTypes.bool.isRequired,

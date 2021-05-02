@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Aside, Item } from './Sidebar.styled';
 
-function Sidebar({ isDarkMode, pathname, handleClickPage }) {
+function Sidebar({ isdarkmode, pathname, handleClickPage }) {
   return (
     <Aside className="menu" id="mySidenav">
       <ul className="menu-list">
         <li>
           <Item
-            isDarkMode={isDarkMode}
+            isdarkmode={isdarkmode}
             className={classnames({
               'is-active': pathname === '/home'
             })}
@@ -24,7 +24,7 @@ function Sidebar({ isDarkMode, pathname, handleClickPage }) {
             className={classnames({
               'is-active': pathname === '/explore'
             })}
-            isDarkMode={isDarkMode}
+            isdarkmode={isdarkmode}
             onClick={() => handleClickPage('explore')}
           >
             <i className="icon material-icons">explore</i> Explore
@@ -32,7 +32,7 @@ function Sidebar({ isDarkMode, pathname, handleClickPage }) {
         </li>
         <li>
           <Item
-            isDarkMode={isDarkMode}
+            isdarkmode={isdarkmode}
             className={classnames({
               'is-active': pathname === '/subscriptions'
             })}
@@ -44,7 +44,7 @@ function Sidebar({ isDarkMode, pathname, handleClickPage }) {
         <hr className="hidden-mobile" />
         <li>
           <Item
-            isDarkMode={isDarkMode}
+            isdarkmode={isdarkmode}
             className={classnames({
               'is-active': pathname === '/library'
             })}
@@ -55,7 +55,7 @@ function Sidebar({ isDarkMode, pathname, handleClickPage }) {
         </li>
         <li>
           <Item
-            isDarkMode={isDarkMode}
+            isdarkmode={isdarkmode}
             className={classnames({
               'is-active': pathname === '/history'
             })}
@@ -66,7 +66,7 @@ function Sidebar({ isDarkMode, pathname, handleClickPage }) {
         </li>
         <li>
           <Item
-            isDarkMode={isDarkMode}
+            isdarkmode={isdarkmode}
             className={classnames({
               'is-active': pathname === '/videos'
             })}
@@ -77,7 +77,7 @@ function Sidebar({ isDarkMode, pathname, handleClickPage }) {
         </li>
         <li>
           <Item
-            isDarkMode={isDarkMode}
+            isdarkmode={isdarkmode}
             className={classnames({
               'is-active': pathname === '/movies'
             })}
@@ -88,7 +88,7 @@ function Sidebar({ isDarkMode, pathname, handleClickPage }) {
         </li>
         <li className="hidden-mobile">
           <Item
-            isDarkMode={isDarkMode}
+            isdarkmode={isdarkmode}
             className={classnames({
               'is-active': pathname === '/watch-later'
             })}
@@ -103,8 +103,7 @@ function Sidebar({ isDarkMode, pathname, handleClickPage }) {
 }
 
 Sidebar.propTypes = {
-  isDarkMode: PropTypes.bool.isRequired,
-  /* openSidebar: PropTypes.bool.isRequired, */
+  isdarkmode: PropTypes.bool.isRequired,
   handleClickPage: PropTypes.func,
   pathname: PropTypes.string
 };

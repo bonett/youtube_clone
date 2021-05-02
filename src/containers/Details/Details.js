@@ -21,7 +21,7 @@ function mapStateToProps(state, ownProps) {
   });
   const videosRecommended = _shuffle(recommendedList);
   return {
-    isDarkMode: darkMode,
+    isdarkmode: darkMode,
     videoDetails: videoDetails[videoDetails.length - 1],
     videosRecommended
   };

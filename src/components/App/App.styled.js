@@ -2,8 +2,8 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 export const AppContainer = styled(({ ...rest }) => <div {...rest} />)`
-  ${({ theme, isDarkMode }) => css`
-    background-color: ${!isDarkMode ? theme.color.light : theme.color.dark};
+  ${({ theme, isdarkmode }) => css`
+    background-color: ${!isdarkmode ? theme.color.light : theme.color.dark};
   `}
 `;
 
@@ -30,9 +30,11 @@ export const Aside = styled(({ ...rest }) => <div {...rest} />)`
 `;
 
 export const Wrapper = styled(({ ...rest }) => <div {...rest} />)`
-  ${() => css`
+  ${({ theme, isdarkmode }) => css`
     &#main {
-      transition: margin-left 0.5s;
+      transition: margin-left 0.1s;
+      width: 100%;
+      background-color: ${!isdarkmode ? theme.color.light : theme.color.dark};
     }
   `}
 `;

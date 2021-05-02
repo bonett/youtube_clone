@@ -12,25 +12,25 @@ import {
   DateSince
 } from './Card.styled';
 
-function CardVideo({ isDarkMode, video, handleClickCard, recommendedSection }) {
+function CardVideo({ isdarkmode, video, handleClickCard, recommendedSection }) {
   const channelTitle = video.publisher[video.publisher.length - 1].name;
   return (
     <React.Fragment>
       {!recommendedSection ? (
         <Card
-          isDarkMode={isDarkMode}
+          isdarkmode={isdarkmode}
           onClick={() => handleClickCard(video.videoId)}
         >
           <Cover>
             <img src={video.thumbnailUrl} />
           </Cover>
-          <Info isDarkMode={isDarkMode}>
-            <Title isDarkMode={isDarkMode}>{video.name}</Title>
-            <Details isDarkMode={isDarkMode}>
-              <ChannelTitle isDarkMode={isDarkMode}>
+          <Info isdarkmode={isdarkmode}>
+            <Title isdarkmode={isdarkmode}>{video.name}</Title>
+            <Details isdarkmode={isdarkmode}>
+              <ChannelTitle isdarkmode={isdarkmode}>
                 {channelTitle} <span className="material-icons">verified</span>
               </ChannelTitle>
-              <DateSince isDarkMode={isDarkMode}>
+              <DateSince isdarkmode={isdarkmode}>
                 {utils.getDateDiff(video.datePublished)}
               </DateSince>
             </Details>
@@ -39,19 +39,19 @@ function CardVideo({ isDarkMode, video, handleClickCard, recommendedSection }) {
       ) : (
         <Card
           className="recommended"
-          isDarkMode={isDarkMode}
+          isdarkmode={isdarkmode}
           onClick={() => handleClickCard(video.videoId)}
         >
-          <Cover isDarkMode={isDarkMode} className="cover">
+          <Cover isdarkmode={isdarkmode} className="cover">
             <img src={video.thumbnailUrl} />
           </Cover>
           <Info className="info-recommended">
-            <Title isDarkMode={isDarkMode}>{video.name}</Title>
+            <Title isdarkmode={isdarkmode}>{video.name}</Title>
             <Details>
-              <ChannelTitle isDarkMode={isDarkMode}>
+              <ChannelTitle isdarkmode={isdarkmode}>
                 {channelTitle} <span className="material-icons">verified</span>
               </ChannelTitle>
-              <DateSince isDarkMode={isDarkMode}>
+              <DateSince isdarkmode={isdarkmode}>
                 {utils.getDateDiff(video.datePublished)}
               </DateSince>
             </Details>
@@ -63,7 +63,7 @@ function CardVideo({ isDarkMode, video, handleClickCard, recommendedSection }) {
 }
 
 CardVideo.propTypes = {
-  isDarkMode: PropTypes.bool.isRequired,
+  isdarkmode: PropTypes.bool.isRequired,
   video: PropTypes.object.isRequired,
   handleClickCard: PropTypes.func,
   recommendedSection: PropTypes.bool

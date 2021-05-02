@@ -19,27 +19,27 @@ export const Wrapper = styled(({ ...rest }) => <div {...rest} />)`
 `;
 
 export const Icon = styled(({ ...rest }) => <span {...rest} />)`
-  ${({ theme, isDarkMode }) => css`
+  ${({ theme, isdarkmode }) => css`
     font-size: 6em;
-    color: ${!isDarkMode ? theme.color.text : theme.color.light};
+    color: ${!isdarkmode ? theme.color.text : theme.color.light};
   `}
 `;
 
 export const Text = styled(({ ...rest }) => <div {...rest} />)`
-  ${({ theme, isDarkMode }) => css`
+  ${({ theme, isdarkmode }) => css`
     font-size: 2.3em;
     text-transform: uppercase;
-    color: ${!isDarkMode ? theme.color.text : theme.color.light};
+    color: ${!isdarkmode ? theme.color.text : theme.color.light};
   `}
 `;
 
 export const Button = styled(({ ...rest }) => <button {...rest} />)`
-  ${({ theme, isDarkMode }) => css`
+  ${({ theme, isdarkmode }) => css`
     background: transparent !important;
-    border: 1px solid ${!isDarkMode ? theme.color.text : theme.color.light};
+    border: 1px solid ${!isdarkmode ? theme.color.text : theme.color.light};
     padding: 10px 14px;
     width: 150px;
-    color: ${!isDarkMode ? theme.color.text : theme.color.light};
+    color: ${!isdarkmode ? theme.color.text : theme.color.light};
     text-transform: uppercase;
     cursor: pointer;
     margin: 20px 0 0 0;

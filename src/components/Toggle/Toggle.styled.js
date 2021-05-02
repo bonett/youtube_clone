@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 export const Wrapper = styled(({ ...rest }) => <div {...rest} />)`
-  ${({ theme, isDarkMode }) => css`
+  ${({ theme, isdarkmode }) => css`
     padding: 12px 0;
 
     .slider {
@@ -12,7 +12,7 @@ export const Wrapper = styled(({ ...rest }) => <div {...rest} />)`
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: ${!isDarkMode ? theme.color.gray : '#3e3e3e'};
+      background-color: ${!isdarkmode ? theme.color.gray : '#3e3e3e'};
       -webkit-transition: 0.4s;
       transition: 0.4s;
     }
@@ -30,7 +30,7 @@ export const Wrapper = styled(({ ...rest }) => <div {...rest} />)`
     }
 
     input:checked + .slider {
-      background-color: ${!isDarkMode ? theme.color.dark : ''};
+      background-color: ${!isdarkmode ? theme.color.dark : ''};
     }
 
     input:focus + .slider {
@@ -49,7 +49,7 @@ export const Wrapper = styled(({ ...rest }) => <div {...rest} />)`
 
     .slider.circle:before {
       border-radius: 50%;
-      background-color: ${!isDarkMode ? '#a7a7a7' : theme.color.white};
+      background-color: ${!isdarkmode ? '#a7a7a7' : theme.color.white};
     }
   `}
 `;

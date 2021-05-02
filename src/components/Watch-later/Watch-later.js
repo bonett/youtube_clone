@@ -3,20 +3,20 @@ import PropTypes from 'prop-types';
 import CommingSoon from '../Cooming-soon/Comming-soon';
 import { WatchLaterSection } from './Watch-later.styled';
 
-function WatchLater({ isDarkMode, history }) {
+function WatchLater({ isdarkmode, history }) {
   const redirectToHome = () => {
     history.push('/');
   };
 
   return (
-    <WatchLaterSection isDarkMode={isDarkMode}>
-      <CommingSoon isDarkMode={isDarkMode} redirectHome={redirectToHome} />
+    <WatchLaterSection isdarkmode={isdarkmode}>
+      <CommingSoon isdarkmode={isdarkmode} redirectHome={redirectToHome} />
     </WatchLaterSection>
   );
 }
 
 WatchLater.propTypes = {
-  isDarkMode: PropTypes.bool.isRequired,
+  isdarkmode: PropTypes.bool.isRequired,
   history: PropTypes.object
 };
 

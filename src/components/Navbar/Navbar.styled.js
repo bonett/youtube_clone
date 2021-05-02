@@ -2,8 +2,8 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 export const NavigationBar = styled(({ ...rest }) => <div {...rest} />)`
-  ${({ theme, isDarkMode }) => css`
-    background-color: ${!isDarkMode ? theme.color.light : theme.color.dark};
+  ${({ theme, isdarkmode }) => css`
+    background-color: ${!isdarkmode ? theme.color.light : theme.color.dark};
     padding: 0.6em 1em;
     display: flex;
     flex-direction: row;
@@ -51,16 +51,16 @@ export const Info = styled(({ ...rest }) => <div {...rest} />)`
 `;
 
 export const Name = styled(({ ...rest }) => <h4 {...rest} />)`
-  ${({ theme, isDarkMode }) => css`
-    color: ${!isDarkMode ? theme.color.text : theme.color.light};
+  ${({ theme, isdarkmode }) => css`
+    color: ${!isdarkmode ? theme.color.text : theme.color.light};
     font-weight: 700 !important;
     text-transform: captalize !important;
   `}
 `;
 
 export const Email = styled(({ ...rest }) => <h5 {...rest} />)`
-  ${({ theme, isDarkMode }) => css`
-    color: ${!isDarkMode ? theme.color.text : theme.color.light};
+  ${({ theme, isdarkmode }) => css`
+    color: ${!isdarkmode ? theme.color.text : theme.color.light};
     font-weight: 700 !important;
     text-transform: captalize !important;
   `}
@@ -76,7 +76,7 @@ export const ManageAccount = styled(({ ...rest }) => <a {...rest} />)`
 `;
 
 export const Brand = styled(({ ...rest }) => <div {...rest} />)`
-  ${({ theme, isDarkMode }) => css`
+  ${({ theme, isdarkmode }) => css`
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -85,7 +85,7 @@ export const Brand = styled(({ ...rest }) => <div {...rest} />)`
     .btn-burger {
       cursor: pointer;
       margin-right: 10px;
-      color: ${!isDarkMode ? theme.color.text : theme.color.light};
+      color: ${!isdarkmode ? theme.color.text : theme.color.light};
     }
 
     a.navbar-item:focus,
@@ -96,7 +96,7 @@ export const Brand = styled(({ ...rest }) => <div {...rest} />)`
     .navbar-link:focus-within,
     .navbar-link:hover,
     .navbar-link.is-active {
-      background-color: ${!isDarkMode
+      background-color: ${!isdarkmode
         ? theme.color.light
         : theme.color.dark} !important;
     }
@@ -117,7 +117,7 @@ export const Brand = styled(({ ...rest }) => <div {...rest} />)`
 `;
 
 export const Search = styled(({ ...rest }) => <div {...rest} />)`
-  ${({ theme, isDarkMode }) => css`
+  ${({ theme, isdarkmode }) => css`
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -133,11 +133,11 @@ export const Search = styled(({ ...rest }) => <div {...rest} />)`
       height: 32px;
       margin: 10px;
       width: 100%;
-      background-color: ${!isDarkMode
+      background-color: ${!isdarkmode
         ? theme.color.light
         : theme.color.dark} !important;
-      border: 1px solid ${!isDarkMode ? '#dedede' : '#3a3a3a'};
-      color: ${!isDarkMode ? theme.color.text : theme.color.light};
+      border: 1px solid ${!isdarkmode ? '#dedede' : '#3a3a3a'};
+      color: ${!isdarkmode ? theme.color.text : theme.color.light};
       padding: 0 16px;
     }
 
@@ -169,7 +169,7 @@ export const Search = styled(({ ...rest }) => <div {...rest} />)`
 `;
 
 export const Menu = styled(({ ...rest }) => <div {...rest} />)`
-  ${({ theme, isDarkMode }) => css`
+  ${({ theme, isdarkmode }) => css`
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -184,7 +184,7 @@ export const Menu = styled(({ ...rest }) => <div {...rest} />)`
       margin: 0 14px;
 
       i {
-        color: ${!isDarkMode ? theme.color.text : theme.color.light};
+        color: ${!isdarkmode ? theme.color.text : theme.color.light};
         font-size: 1.6em;
       }
     }
@@ -195,27 +195,27 @@ export const Menu = styled(({ ...rest }) => <div {...rest} />)`
     .navbar-link:focus,
     .navbar-link:focus-within,
     .navbar-link.is-active {
-      background-color: ${!isDarkMode
+      background-color: ${!isdarkmode
         ? theme.color.light
         : theme.color.dark} !important;
     }
 
     .navbar-dropdown {
-      background-color: ${!isDarkMode ? theme.color.light : theme.color.dark};
+      background-color: ${!isdarkmode ? theme.color.light : theme.color.dark};
       border-top: none;
 
       hr {
-        border-color: ${!isDarkMode ? '#dedede' : '#3a3a3a'};
+        border-color: ${!isdarkmode ? '#dedede' : '#3a3a3a'};
         height: 1px !important;
       }
 
       a {
-        color: ${!isDarkMode ? theme.color.text : theme.color.light} !important;
+        color: ${!isdarkmode ? theme.color.text : theme.color.light} !important;
         margin: 2px 0;
         padding: 6px 22px;
 
         i {
-          color: ${!isDarkMode ? theme.color.text : theme.color.light};
+          color: ${!isdarkmode ? theme.color.text : theme.color.light};
           font-size: 1.6em;
           margin-right: 10px !important;
         }
@@ -229,8 +229,8 @@ export const Menu = styled(({ ...rest }) => <div {...rest} />)`
     @media screen and (min-width: 1024px) {
       .navbar-dropdown a.navbar-item:focus,
       .navbar-dropdown a.navbar-item:hover {
-        background-color: ${!isDarkMode ? '#e8e7e7' : '#444444'};
-        color: ${!isDarkMode ? theme.color.text : theme.color.light};
+        background-color: ${!isdarkmode ? '#e8e7e7' : '#444444'};
+        color: ${!isdarkmode ? theme.color.text : theme.color.light};
       }
     }
 

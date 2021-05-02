@@ -24,48 +24,9 @@ import Autocomplete from 'react-autocomplete';
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: '', openSidebar: true };
+    this.state = { value: '' };
     this.handleInputSearch = this.handleInputSearch.bind(this);
     this.handleSelectedSearch = this.handleInputSearch.bind(this);
-    this.handleSidebar = this.handleSidebar.bind(this);
-    this.handleEffectSidebar = this.handleEffectSidebar.bind(this);
-  }
-
-  componentDidMount = () => {
-    const { fetchVideos } = this.props;
-    const { openSidebar } = this.state;
-
-    this.handleEffectSidebar(!openSidebar);
-
-    fetchVideos();
-  };
-
-  componentDidUpdate() {
-    if (window.location.pathname !== '/home') {
-      this.handleEffectSidebar(true);
-    } else {
-      this.handleEffectSidebar(false);
-    }
-  }
-
-  handleSidebar() {
-    const { openSidebar } = this.state;
-
-    this.setState({
-      openSidebar: !openSidebar
-    });
-
-    this.handleEffectSidebar(openSidebar);
-  }
-
-  handleEffectSidebar(status) {
-    if (status) {
-      document.getElementById('mySidenav').style.width = '0';
-      document.getElementById('main').style.marginLeft = '0';
-    } else {
-      document.getElementById('mySidenav').style.width = '250px';
-      document.getElementById('main').style.marginLeft = '250px';
-    }
   }
 
   handleInputSearch(e) {
@@ -77,26 +38,23 @@ class Navbar extends React.Component {
   handleSelectedSearch() {}
 
   render() {
-    const { isDarkMode, onChangeToggle } = this.props;
+    const { isdarkmode, onChangeToggle, handleSidebar } = this.props;
     const { value } = this.state;
     return (
-      <NavigationBar className="navbar" isDarkMode={isDarkMode}>
-        <Brand isDarkMode={isDarkMode}>
-          <span
-            className="btn-burger material-icons"
-            onClick={this.handleSidebar}
-          >
+      <NavigationBar className="navbar" isdarkmode={isdarkmode}>
+        <Brand isdarkmode={isdarkmode}>
+          <span className="btn-burger material-icons" onClick={handleSidebar}>
             menu
           </span>
           <Link className="navbar-item" to="/">
             <img
-              src={!isDarkMode ? logoLight : logoDark}
+              src={!isdarkmode ? logoLight : logoDark}
               width="112"
               height="28"
             />
           </Link>
         </Brand>
-        <Search isDarkMode={isDarkMode}>
+        <Search isdarkmode={isdarkmode}>
           <Autocomplete
             placeholder="Search"
             getItemValue={(item) => item.text}
@@ -114,7 +72,7 @@ class Navbar extends React.Component {
             onSelect={(item) => this.handleSelectedSearch(item)}
           />
         </Search>
-        <Menu isDarkMode={isDarkMode}>
+        <Menu isdarkmode={isdarkmode}>
           <a>
             <i className="icon material-icons">video_call</i>
           </a>
@@ -136,8 +94,8 @@ class Navbar extends React.Component {
                     <UserPhoto src={defaultUser} />
                   </Photo>
                   <Info>
-                    <Name isDarkMode={isDarkMode}>Wilfrido Bonett</Name>
-                    <Email isDarkMode={isDarkMode}>wbonett10@gmail.com</Email>
+                    <Name isdarkmode={isdarkmode}>Wilfrido Bonett</Name>
+                    <Email isdarkmode={isdarkmode}>wbonett10@gmail.com</Email>
                     <ManageAccount>Manage your Google Account</ManageAccount>
                   </Info>
                 </Profile>
@@ -166,7 +124,7 @@ class Navbar extends React.Component {
                   <i className="icon material-icons">format_color_fill</i>{' '}
                   Appearance{' '}
                   <Toggle
-                    isDarkMode={isDarkMode}
+                    isdarkmode={isdarkmode}
                     onChangeToggle={onChangeToggle}
                   />
                 </a>
@@ -205,15 +163,15 @@ class Navbar extends React.Component {
 }
 
 Navbar.propTypes = {
-  isDarkMode: PropTypes.bool.isRequired,
+  isdarkmode: PropTypes.bool.isRequired,
   onChangeToggle: PropTypes.func,
-  fetchVideos: PropTypes.func,
+  handleSidebar: PropTypes.func,
   pathname: PropTypes.any
 };
 
 Navbar.defaultProps = {
   onChangeToggle: () => {},
-  fetchVideos: () => {}
+  handleSidebar: () => {}
 };
 
 export default Navbar;

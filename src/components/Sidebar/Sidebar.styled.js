@@ -2,17 +2,18 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 export const Aside = styled(({ ...rest }) => <aside {...rest} />)`
-  ${({ isDarkMode }) => css`
-    position: relative;
+  ${({ isdarkmode }) => css`
+    position: absolute;
     z-index: 999;
     margin-top: 15px;
+    transition: margin-left 0.1s;
 
     .hidden-mobile {
       display: block;
     }
 
     hr {
-      border-color: ${!isDarkMode ? '#dedede' : '#3a3a3a'};
+      border-color: ${!isdarkmode ? '#dedede' : '#3a3a3a'};
       height: 1px !important;
     }
 
@@ -25,7 +26,7 @@ export const Aside = styled(({ ...rest }) => <aside {...rest} />)`
 `;
 
 export const Item = styled(({ ...rest }) => <a {...rest} />)`
-  ${({ theme, isDarkMode }) => css`
+  ${({ theme, isdarkmode }) => css`
     align-items: center !important;
     display: flex !important;
     flex-direction: row !important;
@@ -34,21 +35,21 @@ export const Item = styled(({ ...rest }) => <a {...rest} />)`
     justify-content: flex-start !important;
     padding: 14px 24px !important;
     width: 100% !important;
-    color: ${!isDarkMode ? theme.color.text : theme.color.light} !important;
+    color: ${!isdarkmode ? theme.color.text : theme.color.light} !important;
 
     &.is-active {
-      background-color: ${!isDarkMode ? '#e8e7e7' : '#3c3c3c'} !important;
+      background-color: ${!isdarkmode ? '#e8e7e7' : '#3c3c3c'} !important;
     }
 
     &:hover {
-      background-color: ${!isDarkMode ? '#e8e7e7' : '#3c3c3c'} !important;
-      color: ${!isDarkMode ? theme.color.text : '#ffffff'} !important;
+      background-color: ${!isdarkmode ? '#e8e7e7' : '#3c3c3c'} !important;
+      color: ${!isdarkmode ? theme.color.text : '#ffffff'} !important;
     }
 
     i {
       margin-right: 10px;
       font-size: 1.6em !important;
-      color: ${!isDarkMode ? theme.color.text : theme.color.light} !important;
+      color: ${!isdarkmode ? theme.color.text : theme.color.light} !important;
     }
 
     @media screen and (max-width: 992px) {
