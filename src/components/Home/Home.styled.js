@@ -2,9 +2,13 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 export const HomeSection = styled(({ ...rest }) => <div {...rest} />)`
-  ${({ theme, isDarkMode }) => css`
+  ${({ showBanner, isDarkMode }) => css`
     background-color: ${!isDarkMode ? '#f5f5f5' : '#131313'};
     padding: 20px;
+    height: ${showBanner ? 'calc(81vh - 200px)' : 'calc(100vh - 140px)'};
+    min-height: ${showBanner ? 'calc(81vh - 200px)' : 'calc(100vh - 140px)'};
+    max-height: ${showBanner ? 'calc(81vh - 200px)' : 'calc(100vh - 140px)'};
+    overflow-y: scroll;
   `}
 `;
 

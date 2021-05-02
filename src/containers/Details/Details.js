@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import * as appStore from '../../store/App';
-import App from '../../components/App';
+import Details from '../../components/Details';
 
 function mapStateToProps(state) {
   const appSelectors = appStore.selectors(state);
@@ -11,6 +11,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {
-  setDarkMode: appStore.actions.setDarkMode
-})(App);
+export default connect(mapStateToProps, {})(Details);

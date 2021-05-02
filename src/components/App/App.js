@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Navbar from '../Navbar';
 import Sidebar from '../Sidebar';
-import Breadcrumb from '../Breadcrumb';
-import Banner from '../Banner';
 import Home from '../../containers/Home';
 import Explore from '../../containers/Explore';
 import Subscriptions from '../../containers/Subscriptions';
@@ -13,44 +11,18 @@ import History from '../../containers/History';
 import Videos from '../../containers/Videos';
 import Movies from '../../containers/Movies';
 import WatchLater from '../../containers/Watch-later';
-import { AppContainer, Main, Aside, Wrapper } from './App.styled';
+import Details from '../../containers/Details';
+import { AppContainer, Content, Aside, Wrapper } from './App.styled';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      openSidebar: false,
-      showBanner: true
+      openSidebar: false
     };
     this.changeThemeColor = this.changeThemeColor.bind(this);
     this.switchPageByName = this.switchPageByName.bind(this);
     this.handleSidebar = this.handleSidebar.bind(this);
-    this.handleCloseBanner = this.handleCloseBanner.bind(this);
-    this.acceptSubscription = this.acceptSubscription.bind(this);
-  }
-
-  componentDidMount = () => {
-    const { fetchPopularVideos, userSubscription } = this.props;
-    const payload = {
-      query: 'all'
-    };
-
-    if (!userSubscription) {
-      this.setState({
-        showBanner: true
-      });
-    }
-
-    fetchPopularVideos(payload);
-  };
-
-  componentDidUpdate(prevProps) {
-    const { userSubscription } = this.props;
-    if (prevProps.userSubscription !== userSubscription) {
-      this.setState({
-        openSidebar: false
-      });
-    }
   }
 
   handleSidebar() {
@@ -58,20 +30,6 @@ class App extends React.Component {
     this.setState({
       openSidebar: !openSidebar
     });
-  }
-
-  handleCloseBanner() {
-    this.setState({
-      showBanner: false
-    });
-  }
-
-  acceptSubscription() {
-    const { setUserSubscription } = this.props;
-    this.setState({
-      showBanner: false
-    });
-    setUserSubscription(true);
   }
 
   changeThemeColor() {
@@ -89,8 +47,8 @@ class App extends React.Component {
   }
 
   render() {
-    const { isDarkMode, suggestions, queryType, location } = this.props;
-    const { openSidebar, showBanner } = this.state;
+    const { isDarkMode, location } = this.props;
+    const { openSidebar } = this.state;
     const { pathname } = location;
 
     return (
@@ -100,46 +58,34 @@ class App extends React.Component {
           onChangeToggle={this.changeThemeColor}
           isDarkMode={isDarkMode}
         />
-        <div className="container-fluid">
-          <Main>
-            <Aside>
-              <Sidebar
-                pathname={pathname}
-                isDarkMode={isDarkMode}
-                openSidebar={openSidebar}
-                handleClickPage={this.switchPageByName}
-              />
-            </Aside>
-            <Wrapper>
-              <React.Fragment>
-                <Breadcrumb
+        <main>
+          <div className="container-fluid">
+            <Content>
+              <Aside>
+                <Sidebar
+                  pathname={pathname}
                   isDarkMode={isDarkMode}
-                  queryType={queryType}
-                  suggestions={suggestions}
+                  openSidebar={openSidebar}
+                  handleClickPage={this.switchPageByName}
                 />
-              </React.Fragment>
-              <React.Fragment>
-                {showBanner && (
-                  <Banner
-                    handleCloseBanner={this.handleCloseBanner}
-                    acceptSubscription={this.acceptSubscription}
-                  />
-                )}
-              </React.Fragment>
-              <Switch>
-                <Route path="/home" component={Home} />
-                <Route path="/explore" component={Explore} />
-                <Route path="/subscriptions" component={Subscriptions} />
-                <Route path="/library" component={Library} />
-                <Route path="/history" component={History} />
-                <Route path="/videos" component={Videos} />
-                <Route path="/movies" component={Movies} />
-                <Route path="/watch-later" component={WatchLater} />
-                <Redirect path="*" to={`/home`} />
-              </Switch>
-            </Wrapper>
-          </Main>
-        </div>
+              </Aside>
+              <Wrapper>
+                <Switch>
+                  <Route path="/home" component={Home} />
+                  <Route path="/watch/:id" component={Details} />
+                  <Route path="/explore" component={Explore} />
+                  <Route path="/subscriptions" component={Subscriptions} />
+                  <Route path="/library" component={Library} />
+                  <Route path="/history" component={History} />
+                  <Route path="/videos" component={Videos} />
+                  <Route path="/movies" component={Movies} />
+                  <Route path="/watch-later" component={WatchLater} />
+                  <Redirect path="*" to={`/home`} />
+                </Switch>
+              </Wrapper>
+            </Content>
+          </div>
+        </main>
       </AppContainer>
     );
   }
@@ -147,20 +93,13 @@ class App extends React.Component {
 
 App.propTypes = {
   isDarkMode: PropTypes.bool.isRequired,
-  userSubscription: PropTypes.bool.isRequired,
   setDarkMode: PropTypes.func,
-  setUserSubscription: PropTypes.func,
-  fetchPopularVideos: PropTypes.func,
   location: PropTypes.object,
-  history: PropTypes.object,
-  suggestions: PropTypes.array,
-  queryType: PropTypes.string.isRequired
+  history: PropTypes.object
 };
 
 App.defaultProps = {
   setDarkMode: () => {},
-  setUserSubscription: () => {},
-  fetchPopularVideos: () => {},
   history: {},
   suggestions: []
 };

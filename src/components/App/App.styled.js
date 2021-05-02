@@ -7,7 +7,7 @@ export const AppContainer = styled(({ ...rest }) => <div {...rest} />)`
   `}
 `;
 
-export const Main = styled(({ ...rest }) => <div {...rest} />)`
+export const Content = styled(({ ...rest }) => <div {...rest} />)`
   ${() => css`
     display: flex;
     flex-direction: row;
@@ -46,6 +46,6 @@ export const Wrapper = styled(({ ...rest }) => <div {...rest} />)`
 `;
 
 AppContainer.displayName = 'AppContainer';
-Main.displayName = 'Main';
+Content.displayName = 'Content';
 Aside.displayName = 'Aside';
 Wrapper.displayName = 'Wrapper';

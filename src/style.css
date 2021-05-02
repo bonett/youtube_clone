@@ -11,3 +11,8 @@
 .navbar-link:not(.is-arrowless)::after {
   display: none !important;
 }
+
+main {
+  height: calc(99vh - 65px);
+  overflow: hidden;
+}

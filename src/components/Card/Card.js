@@ -12,11 +12,13 @@ import {
   DateSince
 } from './Card.styled';
 
-function CardVideo({ isDarkMode, video }) {
-  console.log(video);
+function CardVideo({ isDarkMode, video, handleClickCard }) {
   const channelTitle = video.publisher[video.publisher.length - 1].name;
   return (
-    <Card isDarkMode={isDarkMode}>
+    <Card
+      isDarkMode={isDarkMode}
+      onClick={() => handleClickCard(video.videoId)}
+    >
       <Cover>
         <img src={video.thumbnailUrl} />
       </Cover>
@@ -37,9 +39,12 @@ function CardVideo({ isDarkMode, video }) {
 
 CardVideo.propTypes = {
   isDarkMode: PropTypes.bool.isRequired,
-  video: PropTypes.object.isRequired
+  video: PropTypes.object.isRequired,
+  handleClickCard: PropTypes.func
 };
 
-CardVideo.defaultProps = {};
+CardVideo.defaultProps = {
+  handleClickCard: () => {}
+};
 
 export default CardVideo;
