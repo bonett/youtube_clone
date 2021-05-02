@@ -5,11 +5,13 @@ export default function (globalState) {
   const getPopularVideos = () => state.popularVideos;
   const getUserSubscription = () => state.userSubscription;
   const getQueryType = () => state.queryType;
+  const getLoadingState = () => state.showLoader;
 
   return {
     getThemeApp,
     getPopularVideos,
     getUserSubscription,
-    getQueryType
+    getQueryType,
+    getLoadingState
   };
 }

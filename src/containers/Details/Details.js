@@ -9,12 +9,12 @@ function mapStateToProps(state, ownProps) {
   const darkMode = appSelectors.getThemeApp();
   const apiResult = appSelectors.getPopularVideos();
   const { id } = match.params;
-  const videoDetails = apiResult.value.filter((video) => {
+  const videoDetails = apiResult.filter((video) => {
     if (video.videoId === id) {
       return video;
     }
   });
-  const recommendedList = apiResult.value.filter((video) => {
+  const recommendedList = apiResult.filter((video) => {
     if (video.videoId !== id) {
       return video;
     }

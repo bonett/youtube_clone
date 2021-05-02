@@ -5,19 +5,20 @@ import Home from '../../components/Home';
 function mapStateToProps(state) {
   const appSelectors = appStore.selectors(state);
   const darkMode = appSelectors.getThemeApp();
-  const apiResult = appSelectors.getPopularVideos();
+  const popularVideos = appSelectors.getPopularVideos();
   const userSubscription = appSelectors.getUserSubscription();
   const queryType = appSelectors.getQueryType();
+  const isloading = appSelectors.getLoadingState();
 
   return {
     isdarkmode: darkMode,
-    popularVideos: apiResult.value,
+    popularVideos,
     userSubscription,
-    queryType
+    queryType,
+    isloading
   };
 }
 
 export default connect(mapStateToProps, {
-  fetchPopularVideos: appStore.actions.fetchPopularVideos,
   setUserSubscription: appStore.actions.setUserSubscription
 })(Home);

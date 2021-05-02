@@ -40,6 +40,12 @@ export const Photo = styled(({ ...rest }) => <div {...rest} />)`
   `}
 `;
 
+export const Span = styled(({ ...rest }) => <span {...rest} />)`
+  ${({ theme, isdarkmode }) => css`
+    color: ${!isdarkmode ? theme.color.text : theme.color.light};
+  `}
+`;
+
 export const Info = styled(({ ...rest }) => <div {...rest} />)`
   ${() => css`
     align-items: flex-start;
@@ -132,17 +138,78 @@ export const Search = styled(({ ...rest }) => <div {...rest} />)`
     input {
       height: 32px;
       margin: 10px;
-      width: 100%;
+      width: 96%;
       background-color: ${!isdarkmode
         ? theme.color.light
         : theme.color.dark} !important;
       border: 1px solid ${!isdarkmode ? '#dedede' : '#3a3a3a'};
       color: ${!isdarkmode ? theme.color.text : theme.color.light};
       padding: 0 16px;
+
+      .icon {
+        color: ${!isdarkmode ? theme.color.text : theme.color.light} !important;
+        cursor: pointer;
+      }
+    }
+
+    span {
+      margin-left: 0px;
+    }
+
+    input::-webkit-input-placeholder {
+      color: ${!isdarkmode ? theme.color.text : theme.color.light};
+    }
+
+    input:-ms-input-placeholder {
+      color: ${!isdarkmode ? theme.color.text : theme.color.light};
+    }
+
+    input::placeholder {
+      color: ${!isdarkmode ? theme.color.text : theme.color.light};
+    }
+
+    .field:not(:last-child) {
+      margin-bottom: 0 !important;
+    }
+
+    .input:focus,
+    .textarea:focus,
+    .select select:focus,
+    .is-focused.input,
+    .is-focused.textarea,
+    .select select.is-focused,
+    .input:active,
+    .textarea:active,
+    .select select:active,
+    .is-active.input,
+    .is-active.textarea,
+    .select select.is-active {
+      border: 1px solid ${!isdarkmode ? '#dedede' : '#3a3a3a'} !important;
+      box-shadow: 0 0 0 0.125em rgb(50 115 220 / 25%);
+    }
+
+    .control.has-icons-right .icon.is-right {
+      background-color: ${!isdarkmode
+        ? theme.color.light
+        : theme.color.dark} !important;
+      cursor: pointer;
+      top: 11px;
+      right: 18px;
+      height: 30px;
+      width: 30px;
+      border-radius: 0 4px 4px 0;
     }
 
     @media screen and (max-width: 767px) {
       width: 50%;
+
+      span {
+        margin-left: 14px;
+      }
+
+      .control.has-icons-right .icon.is-right {
+        right: 4px;
+      }
 
       div:first-child {
         width: 50%;
@@ -270,3 +337,4 @@ Search.displayName = 'Search';
 Brand.displayName = 'Brand';
 Menu.displayName = 'Menu';
 ManageAccount.displayName = 'ManageAccount';
+Span.displayName = 'Span';

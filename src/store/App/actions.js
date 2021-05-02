@@ -9,6 +9,14 @@ export const setDarkMode = (payload) => ({
   payload
 });
 
+export const showLoaderContent = () => ({
+  type: at.SHOW_LOADER_CONTENT
+});
+
+export const hideLoaderContent = () => ({
+  type: at.HIDE_LOADER_CONTENT
+});
+
 export const getQueryType = () => ({
   type: at.GET_QUERY_TYPE
 });

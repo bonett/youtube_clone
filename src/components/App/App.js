@@ -69,7 +69,13 @@ class App extends React.Component {
   }
 
   render() {
-    const { isdarkmode, location } = this.props;
+    const {
+      isdarkmode,
+      location,
+      fetchPopularVideos,
+      setQueryType,
+      queryType
+    } = this.props;
     const { openSidebar } = this.state;
     const { pathname } = location;
 
@@ -77,9 +83,12 @@ class App extends React.Component {
       <AppContainer isdarkmode={isdarkmode}>
         <Navbar
           pathname={pathname}
+          fetchPopularVideos={fetchPopularVideos}
           handleSidebar={this.handleSidebar}
           onChangeToggle={this.changeThemeColor}
           isdarkmode={isdarkmode}
+          setQueryType={setQueryType}
+          queryType={queryType}
         />
         <main>
           <div className="container-fluid">
@@ -118,13 +127,18 @@ App.propTypes = {
   isdarkmode: PropTypes.bool.isRequired,
   setDarkMode: PropTypes.func,
   location: PropTypes.object,
-  history: PropTypes.object
+  history: PropTypes.object,
+  fetchPopularVideos: PropTypes.func,
+  queryType: PropTypes.string,
+  setQueryType: PropTypes.func
 };
 
 App.defaultProps = {
   setDarkMode: () => {},
   history: {},
-  suggestions: []
+  suggestions: [],
+  fetchPopularVideos: () => {},
+  setQueryType: () => {}
 };
 
 export default App;

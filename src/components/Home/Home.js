@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import CardVideo from '../Card';
 import { HomeSection, Columns } from './Home.styled';
 import Banner from '../../components/Banner';
+import Loader from '../../components/Loader';
 
 class Home extends React.Component {
   constructor(props) {
@@ -12,15 +13,6 @@ class Home extends React.Component {
     this.viewDetailsPage = this.viewDetailsPage.bind(this);
     this.acceptSubscription = this.acceptSubscription.bind(this);
   }
-
-  componentDidMount = () => {
-    const { fetchPopularVideos } = this.props;
-    const payload = {
-      query: 'all'
-    };
-
-    fetchPopularVideos(payload);
-  };
 
   componentWillReceiveProps(prevProps) {
     const { userSubscription } = this.props;
@@ -51,8 +43,12 @@ class Home extends React.Component {
   }
 
   render() {
-    const { isdarkmode, popularVideos, userSubscription } = this.props;
-
+    const {
+      isdarkmode,
+      popularVideos,
+      userSubscription,
+      isloading
+    } = this.props;
     return (
       <React.Fragment>
         <Banner
@@ -61,18 +57,24 @@ class Home extends React.Component {
           acceptSubscription={this.acceptSubscription}
         />
         <HomeSection isdarkmode={isdarkmode}>
-          <Columns>
-            {popularVideos.map((video) => {
-              return (
-                <CardVideo
-                  key={video.videoId}
-                  isdarkmode={isdarkmode}
-                  video={video}
-                  handleClickCard={this.viewDetailsPage}
-                />
-              );
-            })}
-          </Columns>
+          <React.Fragment>
+            {!isloading && popularVideos.length > 0 ? (
+              <Columns>
+                {popularVideos.map((video) => {
+                  return (
+                    <CardVideo
+                      key={video.videoId}
+                      isdarkmode={isdarkmode}
+                      video={video}
+                      handleClickCard={this.viewDetailsPage}
+                    />
+                  );
+                })}
+              </Columns>
+            ) : (
+              <Loader />
+            )}
+          </React.Fragment>
         </HomeSection>
       </React.Fragment>
     );
@@ -85,13 +87,12 @@ Home.propTypes = {
   history: PropTypes.object,
   userSubscription: PropTypes.bool.isRequired,
   setUserSubscription: PropTypes.func,
-  fetchPopularVideos: PropTypes.func
+  isloading: PropTypes.bool.isRequired
 };
 
 Home.defaultProps = {
   popularVideos: [],
-  setUserSubscription: () => {},
-  fetchPopularVideos: () => {}
+  setUserSubscription: () => {}
 };
 
 export default Home;

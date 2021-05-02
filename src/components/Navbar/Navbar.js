@@ -16,23 +16,37 @@ import {
   ManageAccount,
   Menu,
   Brand,
-  Search
+  Search,
+  Span
 } from './Navbar.styled';
-import { defaultSuggestions } from '../../config';
-import Autocomplete from 'react-autocomplete';
-
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = { value: '' };
     this.handleInputSearch = this.handleInputSearch.bind(this);
     this.handleSelectedSearch = this.handleInputSearch.bind(this);
+    this.searchData = this.searchData.bind(this);
   }
 
-  handleInputSearch(e) {
+  componentDidMount() {
+    const { fetchPopularVideos, queryType } = this.props;
+    fetchPopularVideos(queryType);
+  }
+
+  handleInputSearch(value) {
     this.setState({
-      value: e
+      value
     });
+  }
+
+  searchData(e) {
+    const { fetchPopularVideos, setQueryType } = this.props;
+    const { value } = this.state;
+
+    if (e.keyCode === 13) {
+      setQueryType(value);
+      fetchPopularVideos(value);
+    }
   }
 
   handleSelectedSearch() {}
@@ -55,22 +69,24 @@ class Navbar extends React.Component {
           </Link>
         </Brand>
         <Search isdarkmode={isdarkmode}>
-          <Autocomplete
-            placeholder="Search"
-            getItemValue={(item) => item.text}
-            items={defaultSuggestions}
-            renderItem={(item, isHighlighted) => (
-              <div
-                style={{ background: isHighlighted ? 'lightgray' : 'white' }}
-                key={item.text}
-              >
-                {item.displayText}
-              </div>
-            )}
-            value={value}
-            onChange={(e) => this.handleInputSearch(e.target.value)}
-            onSelect={(item) => this.handleSelectedSearch(item)}
-          />
+          <div className="field">
+            <p className="control has-icons-right">
+              <input
+                className="input"
+                type="text"
+                placeholder="Search"
+                defaultValue={value}
+                onChange={(e) => this.handleInputSearch(e.target.value)}
+                onKeyUp={(e) => this.searchData(e)}
+              />
+              <span className="icon is-small is-right">
+                <span className="material-icons">search</span>
+              </span>
+            </p>
+          </div>
+          <Span className="material-icons" isdarkmode={isdarkmode}>
+            mic
+          </Span>
         </Search>
         <Menu isdarkmode={isdarkmode}>
           <a>
@@ -166,12 +182,17 @@ Navbar.propTypes = {
   isdarkmode: PropTypes.bool.isRequired,
   onChangeToggle: PropTypes.func,
   handleSidebar: PropTypes.func,
-  pathname: PropTypes.any
+  fetchPopularVideos: PropTypes.func,
+  pathname: PropTypes.any,
+  queryType: PropTypes.string,
+  setQueryType: PropTypes.func
 };
 
 Navbar.defaultProps = {
   onChangeToggle: () => {},
-  handleSidebar: () => {}
+  handleSidebar: () => {},
+  fetchPopularVideos: () => {},
+  setQueryType: () => {}
 };
 
 export default Navbar;
