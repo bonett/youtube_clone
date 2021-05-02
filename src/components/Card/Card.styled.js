@@ -78,6 +78,16 @@ export const Info = styled(({ ...rest }) => <div {...rest} />)`
       h6 {
         font-size: 0.7em;
       }
+
+      @media (max-width: 991px) {
+        h4 {
+          font-size: 1.2em;
+        }
+
+        h6 {
+          font-size: 1em;
+        }
+      }
     }
   `}
 `;

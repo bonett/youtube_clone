@@ -12,6 +12,10 @@ export const DetailsWrapper = styled(({ ...rest }) => <div {...rest} />)`
       width: 100%;
       height: 520px;
     }
+
+    @media (max-width: 991px) {
+      overflow-y: scroll;
+    }
   `}
 `;
 
@@ -22,12 +26,19 @@ export const Content = styled(({ ...rest }) => <div {...rest} />)`
     flex-direction: row;
     justify-content: space-around;
     width: 100%;
+
+    @media (max-width: 991px) {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
   `}
 `;
 
 export const Video = styled(({ ...rest }) => <div {...rest} />)`
   ${() => css`
-    width: 70%;
+    width: 55%;
     padding: 10px;
     align-items: center;
     display: flex;
@@ -40,7 +51,7 @@ export const Video = styled(({ ...rest }) => <div {...rest} />)`
 export const List = styled(({ ...rest }) => <div {...rest} />)`
   ${({ theme, isdarkmode }) => css`
     background-color: ${!isdarkmode ? '#f5f5f5' : '#131313'};
-    width: 30%;
+    width: 45%;
     min-height: 800px;
     max-height: 800px;
     height: 800px;
@@ -65,6 +76,10 @@ export const List = styled(({ ...rest }) => <div {...rest} />)`
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
+    }
+
+    @media (max-width: 991px) {
+      width: 100%;
     }
   `}
 `;

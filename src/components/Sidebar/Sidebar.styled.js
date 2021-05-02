@@ -17,7 +17,7 @@ export const Aside = styled(({ ...rest }) => <aside {...rest} />)`
       height: 1px !important;
     }
 
-    @media screen and (max-width: 992px) {
+    @media screen and (max-width: 1199px) {
       .hidden-mobile {
         display: none;
       }
@@ -52,7 +52,7 @@ export const Item = styled(({ ...rest }) => <a {...rest} />)`
       color: ${!isdarkmode ? theme.color.text : theme.color.light} !important;
     }
 
-    @media screen and (max-width: 992px) {
+    @media screen and (max-width: 1199px) {
       display: flex !important;
       flex-direction: column !important;
       justify-content: center !important;

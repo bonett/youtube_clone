@@ -61,7 +61,7 @@ class Home extends React.Component {
           handleCloseBanner={this.handleCloseBanner}
           acceptSubscription={this.acceptSubscription}
         />
-        <HomeSection isdarkmode={isdarkmode}>
+        <HomeSection isdarkmode={isdarkmode} show={show}>
           <React.Fragment>
             {!isloading && popularVideos.length > 0 ? (
               <Columns>

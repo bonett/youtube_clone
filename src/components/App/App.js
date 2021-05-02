@@ -30,7 +30,7 @@ class App extends React.Component {
   }
 
   reportWindowSize() {
-    if (window.innerWidth < 992) {
+    if (window.innerWidth < 1200) {
       this.mobileSidebar();
     } else {
       this.desktopSidebar();
@@ -50,7 +50,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    if (window.innerWidth < 992) {
+    if (window.innerWidth < 1200) {
       this.mobileSidebar();
     } else {
       this.desktopSidebar();
@@ -75,7 +75,7 @@ class App extends React.Component {
       document.getElementById('mySidenav').style.overflow = 'hidden';
       document.getElementById('main').style.marginLeft = '0';
     } else {
-      if (window.innerWidth < 768) {
+      if (window.innerWidth < 1200) {
         this.mobileSidebar();
       } else {
         this.desktopSidebar();
