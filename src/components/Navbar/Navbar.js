@@ -35,22 +35,16 @@ class Navbar extends React.Component {
     const { fetchVideos } = this.props;
     const { openSidebar } = this.state;
 
-    if (window.location.pathname === '/home') {
-      this.handleEffectSidebar(!openSidebar);
-    } else {
-      this.handleEffectSidebar(openSidebar);
-    }
+    this.handleEffectSidebar(!openSidebar);
 
     fetchVideos();
   };
 
   componentDidUpdate() {
-    const { openSidebar } = this.state;
-
-    if (window.location.pathname === '/home') {
-      this.handleEffectSidebar(!openSidebar);
+    if (window.location.pathname !== '/home') {
+      this.handleEffectSidebar(true);
     } else {
-      this.handleEffectSidebar(openSidebar);
+      this.handleEffectSidebar(false);
     }
   }
 
@@ -75,15 +69,12 @@ class Navbar extends React.Component {
   }
 
   handleInputSearch(e) {
-    console.log('handleInputSearch', e);
     this.setState({
       value: e
     });
   }
 
-  handleSelectedSearch(e) {
-    console.log('handleSelectedSearch', e);
-  }
+  handleSelectedSearch() {}
 
   render() {
     const { isDarkMode, onChangeToggle } = this.props;

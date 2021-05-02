@@ -14,7 +14,7 @@ class Home extends React.Component {
   }
 
   componentDidMount = () => {
-    const { userSubscription, fetchPopularVideos } = this.props;
+    const { fetchPopularVideos } = this.props;
     const payload = {
       query: 'all'
     };
@@ -22,7 +22,7 @@ class Home extends React.Component {
     fetchPopularVideos(payload);
   };
 
-  componentDidUpdate(prevProps) {
+  componentWillReceiveProps(prevProps) {
     const { userSubscription } = this.props;
     if (prevProps.userSubscription !== userSubscription) {
       this.setState({

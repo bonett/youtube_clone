@@ -24,7 +24,6 @@ export const Aside = styled(({ ...rest }) => <div {...rest} />)`
     top: 0;
     left: 0;
     background-color: #111;
-    overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
   `}

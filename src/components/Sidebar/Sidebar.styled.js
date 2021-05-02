@@ -3,6 +3,10 @@ import styled, { css } from 'styled-components';
 
 export const Aside = styled(({ ...rest }) => <aside {...rest} />)`
   ${({ isDarkMode }) => css`
+    position: relative;
+    z-index: 999;
+    margin-top: 15px;
+
     .hidden-mobile {
       display: block;
     }
