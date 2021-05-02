@@ -38,9 +38,7 @@ function Details({ isDarkMode, videoDetails, videosRecommended }) {
         <Video>
           <iframe
             src="https://player.cnbc.com/p/gZWlPC/cnbc_global?playertype=synd&byGuid=7000188461"
-            allowFullScreen="true"
             bgcolor="#131313"
-            height="500px"
             scrolling="no"
           ></iframe>
           <Name isDarkMode={isDarkMode}>{videoDetails.name}</Name>
