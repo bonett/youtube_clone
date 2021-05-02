@@ -11,24 +11,42 @@ export const Card = styled(({ ...rest }) => <div {...rest} />)`
     justify-content: flex-start;
     align-items: center;
     padding: 0;
+    cursor: pointer;
+
+    &:hover {
+      background-color: ${isDarkMode ? '#2f2f2f' : '#e0e0e0'} !important;
+    }
 
     &.recommended {
+      cursor: pointer;
       display: flex;
       flex-flow: row;
       justify-content: center;
       align-items: center;
       margin: 0;
+      padding: 8px;
+      background-color: ${!isDarkMode ? '#fff' : '#1f1f1f'};
       box-shadow: none;
+      border-bottom: 1px solid ${!isDarkMode ? '#dedede' : '#3a3a3a'};
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background-color: ${isDarkMode ? '#2f2f2f' : '#e0e0e0'} !important;
+      }
     }
   `}
 `;
 
 export const Cover = styled(({ ...rest }) => <div {...rest} />)`
-  ${() => css`
+  ${({ isDarkMode }) => css`
     width: 100% !important;
+    background-color: ${!isDarkMode ? '#fff' : '#131313'};
 
     &.cover {
-      padding: 4px;
+      padding: 0;
     }
 
     img,
@@ -40,8 +58,7 @@ export const Cover = styled(({ ...rest }) => <div {...rest} />)`
 `;
 
 export const Info = styled(({ ...rest }) => <div {...rest} />)`
-  ${({ theme, isDarkMode }) => css`
-    background-color: ${!isDarkMode ? theme.color.light : '#131313'};
+  ${() => css`
     padding: 14px;
     width: 100%;
     height: 180px;
@@ -55,11 +72,11 @@ export const Info = styled(({ ...rest }) => <div {...rest} />)`
       align-items: flex-start;
 
       h4 {
-        font-size: 0.9em;
+        font-size: 0.8em;
       }
 
       h6 {
-        font-size: 0.9em;
+        font-size: 0.7em;
       }
     }
   `}
@@ -73,8 +90,7 @@ export const Title = styled(({ ...rest }) => <h4 {...rest} />)`
 `;
 
 export const Details = styled(({ ...rest }) => <div {...rest} />)`
-  ${({ theme, isDarkMode }) => css`
-    background-color: ${!isDarkMode ? theme.color.light : '#131313'};
+  ${() => css`
     display: flex;
     align-items: flex-start;
     justify-content: center;

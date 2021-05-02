@@ -5,7 +5,7 @@ import { Aside, Item } from './Sidebar.styled';
 
 function Sidebar({ isDarkMode, pathname, handleClickPage }) {
   return (
-    <Aside className="menu">
+    <Aside className="menu" id="mySidenav">
       <ul className="menu-list">
         <li>
           <Item
@@ -53,7 +53,7 @@ function Sidebar({ isDarkMode, pathname, handleClickPage }) {
             <i className="icon material-icons">video_library</i> Library
           </Item>
         </li>
-        <li className="hidden-mobile">
+        <li>
           <Item
             isDarkMode={isDarkMode}
             className={classnames({
@@ -64,7 +64,7 @@ function Sidebar({ isDarkMode, pathname, handleClickPage }) {
             <i className="icon material-icons">history</i> History
           </Item>
         </li>
-        <li className="hidden-mobile">
+        <li>
           <Item
             isDarkMode={isDarkMode}
             className={classnames({
@@ -75,7 +75,7 @@ function Sidebar({ isDarkMode, pathname, handleClickPage }) {
             <i className="icon material-icons">slideshow</i> Videos
           </Item>
         </li>
-        <li className="hidden-mobile">
+        <li>
           <Item
             isDarkMode={isDarkMode}
             className={classnames({

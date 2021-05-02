@@ -54,6 +54,7 @@ class App extends React.Component {
     return (
       <AppContainer isDarkMode={isDarkMode}>
         <Navbar
+          pathname={pathname}
           handleSidebar={this.handleSidebar}
           onChangeToggle={this.changeThemeColor}
           isDarkMode={isDarkMode}
@@ -69,7 +70,7 @@ class App extends React.Component {
                   handleClickPage={this.switchPageByName}
                 />
               </Aside>
-              <Wrapper id="main-content">
+              <Wrapper id="main">
                 <Switch>
                   <Route path="/home" component={Home} />
                   <Route path="/watch/:id" component={Details} />

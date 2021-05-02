@@ -88,7 +88,14 @@ export const Brand = styled(({ ...rest }) => <div {...rest} />)`
       color: ${!isDarkMode ? theme.color.text : theme.color.light};
     }
 
-    a:hover {
+    a.navbar-item:focus,
+    a.navbar-item:focus-within,
+    a.navbar-item:hover,
+    a.navbar-item.is-active,
+    .navbar-link:focus,
+    .navbar-link:focus-within,
+    .navbar-link:hover,
+    .navbar-link.is-active {
       background-color: ${!isDarkMode
         ? theme.color.light
         : theme.color.dark} !important;

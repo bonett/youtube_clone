@@ -24,21 +24,49 @@ import Autocomplete from 'react-autocomplete';
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: '' };
+    this.state = { value: '', openSidebar: true };
     this.handleInputSearch = this.handleInputSearch.bind(this);
     this.handleSelectedSearch = this.handleInputSearch.bind(this);
+    this.handleSidebar = this.handleSidebar.bind(this);
+    this.handleEffectSidebar = this.handleEffectSidebar.bind(this);
   }
 
   componentDidMount = () => {
     const { fetchVideos } = this.props;
+    const { openSidebar } = this.state;
+
+    this.handleEffectSidebar(!openSidebar);
+
     fetchVideos();
-    /* const burger = document.querySelector('.burger');
-    const menu = document.querySelector('#' + burger.dataset.target);
-    burger.addEventListener('click', () => {
-      burger.classList.toggle('is-active');
-      menu.classList.toggle('is-active');
-    }); */
   };
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.pathname !== 'home') {
+      this.handleEffectSidebar(false);
+    } else {
+      this.handleEffectSidebar(true);
+    }
+  }
+
+  handleSidebar() {
+    const { openSidebar } = this.state;
+
+    this.setState({
+      openSidebar: !openSidebar
+    });
+
+    this.handleEffectSidebar(openSidebar);
+  }
+
+  handleEffectSidebar(status) {
+    if (status) {
+      document.getElementById('mySidenav').style.width = '0';
+      document.getElementById('main').style.marginLeft = '0';
+    } else {
+      document.getElementById('mySidenav').style.width = '250px';
+      document.getElementById('main').style.marginLeft = '250px';
+    }
+  }
 
   handleInputSearch(e) {
     console.log('handleInputSearch', e);
@@ -52,15 +80,14 @@ class Navbar extends React.Component {
   }
 
   render() {
-    const { isDarkMode, onChangeToggle, handleSidebar } = this.props;
+    const { isDarkMode, onChangeToggle } = this.props;
     const { value } = this.state;
     return (
       <NavigationBar className="navbar" isDarkMode={isDarkMode}>
         <Brand isDarkMode={isDarkMode}>
           <span
-            id="btn-burger"
             className="btn-burger material-icons"
-            onClick={handleSidebar}
+            onClick={this.handleSidebar}
           >
             menu
           </span>
@@ -184,13 +211,12 @@ Navbar.propTypes = {
   isDarkMode: PropTypes.bool.isRequired,
   onChangeToggle: PropTypes.func,
   fetchVideos: PropTypes.func,
-  handleSidebar: PropTypes.func
+  pathname: PropTypes.any
 };
 
 Navbar.defaultProps = {
   onChangeToggle: () => {},
-  fetchVideos: () => {},
-  handleSidebar: () => {}
+  fetchVideos: () => {}
 };
 
 export default Navbar;

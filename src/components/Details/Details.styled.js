@@ -26,7 +26,7 @@ export const Content = styled(({ ...rest }) => <div {...rest} />)`
 `;
 
 export const Video = styled(({ ...rest }) => <div {...rest} />)`
-  ${({ theme, isDarkMode }) => css`
+  ${() => css`
     width: 70%;
     padding: 10px;
     align-items: center;
@@ -39,6 +39,7 @@ export const Video = styled(({ ...rest }) => <div {...rest} />)`
 
 export const List = styled(({ ...rest }) => <div {...rest} />)`
   ${({ theme, isDarkMode }) => css`
+    background-color: ${!isDarkMode ? '#f5f5f5' : '#131313'};
     width: 30%;
     min-height: 800px;
     max-height: 800px;
@@ -49,9 +50,17 @@ export const List = styled(({ ...rest }) => <div {...rest} />)`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    margin-top: 20px;
+
+    h4 {
+      font-size: 1.2em;
+      font-weight: 400;
+      color: ${!isDarkMode ? theme.color.text : theme.color.light};
+    }
 
     .list {
       overflow-y: scroll;
+      border: 1px solid ${!isDarkMode ? '#dedede' : '#3a3a3a'};
       align-items: flex-start;
       display: flex;
       flex-direction: column;
@@ -71,6 +80,11 @@ export const Name = styled(({ ...rest }) => <h2 {...rest} />)`
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    cursor: pointer;
+
+    &:hover {
+      color: #0085ff;
+    }
   `}
 `;
 
@@ -94,10 +108,15 @@ export const Publisher = styled(({ ...rest }) => <h5 {...rest} />)`
     align-items: center;
     margin-top: 20px;
     font-size: 0.9em;
+    cursor: pointer;
     font-weight: 400;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+
+    &:hover {
+      color: #0085ff;
+    }
   `}
 `;
 

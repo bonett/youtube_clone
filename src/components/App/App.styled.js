@@ -17,30 +17,23 @@ export const Content = styled(({ ...rest }) => <div {...rest} />)`
 
 export const Aside = styled(({ ...rest }) => <div {...rest} />)`
   ${() => css`
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-
-    @media screen and (max-width: 992px) {
-      width: 70px !important;
-    }
-
-    @media screen and (max-width: 568px) {
-      transform: translateX(-200px);
-      width: 0 !important;
-    }
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
   `}
 `;
 
 export const Wrapper = styled(({ ...rest }) => <div {...rest} />)`
   ${() => css`
-    display: flex;
-    flex-direction: column;
-    width: 87%;
-    padding: 0;
-
-    @media screen and (max-width: 768px) {
-      width: 100%;
+    &#main {
+      transition: margin-left 0.5s;
     }
   `}
 `;

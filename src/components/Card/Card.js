@@ -42,12 +42,12 @@ function CardVideo({ isDarkMode, video, handleClickCard, recommendedSection }) {
           isDarkMode={isDarkMode}
           onClick={() => handleClickCard(video.videoId)}
         >
-          <Cover className="cover">
+          <Cover isDarkMode={isDarkMode} className="cover">
             <img src={video.thumbnailUrl} />
           </Cover>
-          <Info isDarkMode={isDarkMode} className="info-recommended">
+          <Info className="info-recommended">
             <Title isDarkMode={isDarkMode}>{video.name}</Title>
-            <Details isDarkMode={isDarkMode}>
+            <Details>
               <ChannelTitle isDarkMode={isDarkMode}>
                 {channelTitle} <span className="material-icons">verified</span>
               </ChannelTitle>
