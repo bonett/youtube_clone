@@ -89,8 +89,9 @@ class App extends React.Component {
   }
 
   render() {
-    const { isDarkMode, suggestions, queryType } = this.props;
+    const { isDarkMode, suggestions, queryType, location } = this.props;
     const { openSidebar, showBanner } = this.state;
+    const { pathname } = location;
 
     return (
       <AppContainer isDarkMode={isDarkMode}>
@@ -103,6 +104,7 @@ class App extends React.Component {
           <Main>
             <Aside>
               <Sidebar
+                pathname={pathname}
                 isDarkMode={isDarkMode}
                 openSidebar={openSidebar}
                 handleClickPage={this.switchPageByName}
@@ -149,6 +151,7 @@ App.propTypes = {
   setDarkMode: PropTypes.func,
   setUserSubscription: PropTypes.func,
   fetchPopularVideos: PropTypes.func,
+  location: PropTypes.object,
   history: PropTypes.object,
   suggestions: PropTypes.array,
   queryType: PropTypes.string.isRequired

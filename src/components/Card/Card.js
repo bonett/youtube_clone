@@ -13,17 +13,12 @@ import {
 } from './Card.styled';
 
 function CardVideo({ isDarkMode, video }) {
+  console.log(video);
   const channelTitle = video.publisher[video.publisher.length - 1].name;
-  const videoUrl = `${video.contentUrl}?embed=true&autoplay=false&ocid=bingembedvideo`;
   return (
     <Card isDarkMode={isDarkMode}>
       <Cover>
-        <iframe
-          src={videoUrl}
-          scrolling="no"
-          allowfullscreen="true"
-          loading="eager"
-        ></iframe>
+        <img src={video.thumbnailUrl} />
       </Cover>
       <Info isDarkMode={isDarkMode}>
         <Title isDarkMode={isDarkMode}>{video.name}</Title>

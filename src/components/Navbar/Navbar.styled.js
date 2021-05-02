@@ -88,6 +88,12 @@ export const Brand = styled(({ ...rest }) => <div {...rest} />)`
       color: ${!isDarkMode ? theme.color.text : theme.color.light};
     }
 
+    a:hover {
+      background-color: ${!isDarkMode
+        ? theme.color.light
+        : theme.color.dark} !important;
+    }
+
     @media screen and (max-width: 1023px) {
       img {
         width: 68px;

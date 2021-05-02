@@ -13,6 +13,10 @@ export const BannerSection = styled(({ ...rest }) => <div {...rest} />)`
     z-index: 2;
     padding: 30px;
 
+    &.notification:not(:last-child) {
+      margin-bottom: 0px !important;
+    }
+
     &:after {
       content: '';
       position: absolute;

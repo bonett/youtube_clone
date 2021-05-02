@@ -17,7 +17,9 @@ export const youtubeTheme = {
     variant1:
       '0 3px 5px rgba(218, 218, 231, 0.49), 0 0 5px rgba(0, 0, 0, 0.15)',
     variant2:
-      '0 3px 5px rgba(218, 218, 231, 0.49), 0 0 5px rgba(218, 218, 231, 0.49)'
+      '0 3px 5px rgba(218, 218, 231, 0.49), 0 0 5px rgba(218, 218, 231, 0.49)',
+    light: '0 1px 3px rgba(0, 0, 0, 0.1)',
+    dark: '0 1px 3px rgb(245 245 245 / 10%)'
   }
 };
 

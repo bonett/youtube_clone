@@ -5,9 +5,7 @@ export const Card = styled(({ ...rest }) => <div {...rest} />)`
   ${({ theme, isDarkMode }) => css`
     margin: 4px;
     width: 100%;
-    box-shadow: ${!isDarkMode
-      ? '0 1px 3px rgba(0, 0, 0, 0.1)'
-      : '0 1px 3px rgb(245 245 245 / 10%)'};
+    box-shadow: ${!isDarkMode ? theme.boxShadow.light : theme.boxShadow.dark};
     display: flex;
     flex-flow: column;
     justify-content: flex-start;

@@ -32,6 +32,10 @@ export const Item = styled(({ ...rest }) => <a {...rest} />)`
     width: 100% !important;
     color: ${!isDarkMode ? theme.color.text : theme.color.light} !important;
 
+    &.is-active {
+      background-color: ${!isDarkMode ? '#e8e7e7' : '#3c3c3c'} !important;
+    }
+
     &:hover {
       background-color: ${!isDarkMode ? '#e8e7e7' : '#3c3c3c'} !important;
       color: ${!isDarkMode ? theme.color.text : '#ffffff'} !important;

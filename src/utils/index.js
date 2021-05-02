@@ -6,7 +6,7 @@ export function getDateDiff(date) {
 
   const days = start.diff(end, 'days');
 
-  if (days > 366) {
+  if (days > 365) {
     const years = start.diff(end, 'years');
     return `${years} years ago`;
   }
@@ -16,12 +16,13 @@ export function getDateDiff(date) {
     return `${months} months ago`;
   }
 
-  if (days > 1 && days < 31) {
+  if (days > 1 && days < 32) {
     const weeks = start.diff(end, 'weeks');
-    return `${weeks} weeks ago`;
+    const status = weeks > 1 ? `${weeks} weeks ago` : `1 week ago`;
+    return status;
   }
 
-  if (days === 1) {
+  if (days < 2) {
     return `A few minutes`;
   }
 }

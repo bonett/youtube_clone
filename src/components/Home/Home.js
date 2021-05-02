@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import CardVideo from '../Card/Card';
 import { HomeSection, Columns } from './Home.styled';
 function Home({ isDarkMode, popularVideos }) {
-  console.log(popularVideos);
   return (
     <HomeSection isDarkMode={isDarkMode}>
       <Columns>
