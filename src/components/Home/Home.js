@@ -3,13 +3,19 @@ import PropTypes from 'prop-types';
 import CardVideo from '../Card/Card';
 import { HomeSection, Columns } from './Home.styled';
 function Home({ isDarkMode, popularVideos }) {
+  console.log(popularVideos);
   return (
     <HomeSection isDarkMode={isDarkMode}>
       <Columns>
-        {/*  {popularVideos.map((video) => {
-          const id = video.id.videoId;
-          return <CardVideo key={id} isDarkMode={isDarkMode} video={video} />;
-        })} */}
+        {popularVideos.map((video) => {
+          return (
+            <CardVideo
+              key={video.videoId}
+              isDarkMode={isDarkMode}
+              video={video}
+            />
+          );
+        })}
       </Columns>
     </HomeSection>
   );

@@ -49,9 +49,7 @@ export const Wrapper = styled(({ ...rest }) => <div {...rest} />)`
 
     .slider.circle:before {
       border-radius: 50%;
-      background-color: ${!isDarkMode
-        ? theme.color.yellow
-        : theme.color.purple};
+      background-color: ${!isDarkMode ? '#a7a7a7' : theme.color.white};
     }
   `}
 `;

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import React from 'react';
 import PropTypes from 'prop-types';
 import utils from '../../utils';
@@ -12,23 +13,26 @@ import {
 } from './Card.styled';
 
 function CardVideo({ isDarkMode, video }) {
-  const thumbnail = video.snippet.thumbnails.default;
-  const title = video.snippet.title;
-  const channelTitle = video.snippet.channelTitle;
-  const datePublished = video.snippet.publishedAt;
+  const channelTitle = video.publisher[video.publisher.length - 1].name;
+  const videoUrl = `${video.contentUrl}?embed=true&autoplay=false&ocid=bingembedvideo`;
   return (
     <Card isDarkMode={isDarkMode}>
       <Cover>
-        <img src={thumbnail.url} />
+        <iframe
+          src={videoUrl}
+          scrolling="no"
+          allowfullscreen="true"
+          loading="eager"
+        ></iframe>
       </Cover>
       <Info isDarkMode={isDarkMode}>
-        <Title isDarkMode={isDarkMode}>{title}</Title>
+        <Title isDarkMode={isDarkMode}>{video.name}</Title>
         <Details isDarkMode={isDarkMode}>
           <ChannelTitle isDarkMode={isDarkMode}>
             {channelTitle} <span className="material-icons">verified</span>
           </ChannelTitle>
           <DateSince isDarkMode={isDarkMode}>
-            {utils.getDateDiff(datePublished)}
+            {utils.getDateDiff(video.datePublished)}
           </DateSince>
         </Details>
       </Info>

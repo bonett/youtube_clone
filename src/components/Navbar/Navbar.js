@@ -13,13 +13,20 @@ import {
   Info,
   Name,
   Email,
-  ManageAccount
+  ManageAccount,
+  Menu,
+  Brand,
+  Search
 } from './Navbar.styled';
+import { defaultSuggestions } from '../../config';
+import Autocomplete from 'react-autocomplete';
 
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { value: '' };
+    this.handleInputSearch = this.handleInputSearch.bind(this);
+    this.handleSelectedSearch = this.handleInputSearch.bind(this);
   }
 
   componentDidMount = () => {
@@ -33,12 +40,23 @@ class Navbar extends React.Component {
     }); */
   };
 
+  handleInputSearch(e) {
+    console.log('handleInputSearch', e);
+    this.setState({
+      value: e
+    });
+  }
+
+  handleSelectedSearch(e) {
+    console.log('handleSelectedSearch', e);
+  }
+
   render() {
     const { isDarkMode, onChangeToggle, handleSidebar } = this.props;
-
+    const { value } = this.state;
     return (
       <NavigationBar className="navbar" isDarkMode={isDarkMode}>
-        <div className="navbar-brand">
+        <Brand isDarkMode={isDarkMode}>
           <span
             id="btn-burger"
             className="btn-burger material-icons"
@@ -53,127 +71,110 @@ class Navbar extends React.Component {
               height="28"
             />
           </Link>
-        </div>
-
-        <div id="navbarBasicExample" className="navbar-menu">
-          {/*  <div className="navbar-start">
-            <a className="navbar-item">Home</a>
-
-            <a className="navbar-item">Documentation</a>
-
-            <div className="navbar-item has-dropdown is-hoverable">
-              <a className="navbar-link">More</a>
-
-              <div className="navbar-dropdown">
-                <a className="navbar-item">About</a>
-                <a className="navbar-item">Jobs</a>
-                <a className="navbar-item">Contact</a>
-                <hr className="navbar-divider" />
-                <a className="navbar-item">Report an issue</a>
+        </Brand>
+        <Search isDarkMode={isDarkMode}>
+          <Autocomplete
+            placeholder="Search"
+            getItemValue={(item) => item.text}
+            items={defaultSuggestions}
+            renderItem={(item, isHighlighted) => (
+              <div
+                style={{ background: isHighlighted ? 'lightgray' : 'white' }}
+                key={item.text}
+              >
+                {item.displayText}
               </div>
-            </div>
-          </div> */}
-
+            )}
+            value={value}
+            onChange={(e) => this.handleInputSearch(e.target.value)}
+            onSelect={(item) => this.handleSelectedSearch(item)}
+          />
+        </Search>
+        <Menu isDarkMode={isDarkMode}>
+          <a>
+            <i className="icon material-icons">video_call</i>
+          </a>
+          <a>
+            <i className="icon material-icons">apps</i>
+          </a>
+          <a>
+            <i className="icon material-icons">notifications</i>
+          </a>
           <div className="navbar-end">
-            <div className="navbar-item">
-              <div className="buttons">
-                <a>
-                  <i className="icon material-icons">video_call</i>
-                </a>
-                <a>
-                  <i className="icon material-icons">apps</i>
-                </a>
-                <a>
-                  <i className="icon material-icons">notifications</i>
-                </a>
-                <div className="navbar-end">
-                  <div className="navbar-item has-dropdown is-hoverable">
-                    <div className="photo">
-                      <UserPhoto src={defaultUser} />
-                    </div>
+            <div className="navbar-item has-dropdown is-hoverable">
+              <div className="photo">
+                <UserPhoto src={defaultUser} />
+              </div>
 
-                    <div className="navbar-dropdown is-right">
-                      <Profile>
-                        <Photo>
-                          <UserPhoto src={defaultUser} />
-                        </Photo>
-                        <Info>
-                          <Name isDarkMode={isDarkMode}>Wilfrido Bonett</Name>
-                          <Email isDarkMode={isDarkMode}>
-                            wbonett10@gmail.com
-                          </Email>
-                          <ManageAccount>
-                            Manage your Google Account
-                          </ManageAccount>
-                        </Info>
-                      </Profile>
-                      <hr className="navbar-divider" />
-                      <a className="navbar-item">
-                        <i className="icon material-icons">account_box</i> Your
-                        channel
-                      </a>
-                      <a className="navbar-item">
-                        <i className="icon material-icons">paid</i> Purchases
-                        and memberships
-                      </a>
-                      <a className="navbar-item">
-                        <i className="icon material-icons">
-                          settings_applications
-                        </i>{' '}
-                        Youtube Studio
-                      </a>
-                      <a className="navbar-item">
-                        <i className="icon material-icons">switch_account</i>{' '}
-                        Switch Account
-                      </a>
-                      <a className="navbar-item">
-                        <i className="icon material-icons">logout</i> Sign Out
-                      </a>
-                      <hr className="navbar-divider" />
-                      <a className="navbar-item">
-                        <i className="icon material-icons">format_color_fill</i>{' '}
-                        Appearance{' '}
-                        <Toggle
-                          isDarkMode={isDarkMode}
-                          onChangeToggle={onChangeToggle}
-                        />
-                      </a>
-                      <a className="navbar-item">
-                        <i className="icon material-icons">g_translate</i>{' '}
-                        Language
-                      </a>
-                      <a className="navbar-item">
-                        <i className="icon material-icons">language</i> Location
-                      </a>
-                      <a className="navbar-item">
-                        <i className="icon material-icons">settings</i> Settings
-                      </a>
-                      <a className="navbar-item">
-                        <i className="icon material-icons">
-                          admin_panel_settings
-                        </i>{' '}
-                        Your data in YouTube
-                      </a>
-                      <a className="navbar-item">
-                        <i className="icon material-icons">help</i> Help
-                      </a>
-                      <a className="navbar-item">
-                        <i className="icon material-icons">feedback</i> Send
-                        feedback
-                      </a>
-                      <a className="navbar-item">
-                        <i className="icon material-icons">keyboard</i> Keyboard
-                        shortcuts
-                      </a>
-                      <hr className="navbar-divider" />
-                      <a className="navbar-item">Restricted mode: off</a>
-                    </div>
-                  </div>
-                </div>
+              <div className="navbar-dropdown is-right">
+                <Profile>
+                  <Photo>
+                    <UserPhoto src={defaultUser} />
+                  </Photo>
+                  <Info>
+                    <Name isDarkMode={isDarkMode}>Wilfrido Bonett</Name>
+                    <Email isDarkMode={isDarkMode}>wbonett10@gmail.com</Email>
+                    <ManageAccount>Manage your Google Account</ManageAccount>
+                  </Info>
+                </Profile>
+                <hr className="navbar-divider" />
+                <a className="navbar-item">
+                  <i className="icon material-icons">account_box</i> Your
+                  channel
+                </a>
+                <a className="navbar-item">
+                  <i className="icon material-icons">paid</i> Purchases and
+                  memberships
+                </a>
+                <a className="navbar-item">
+                  <i className="icon material-icons">settings_applications</i>{' '}
+                  Youtube Studio
+                </a>
+                <a className="navbar-item">
+                  <i className="icon material-icons">switch_account</i> Switch
+                  Account
+                </a>
+                <a className="navbar-item">
+                  <i className="icon material-icons">logout</i> Sign Out
+                </a>
+                <hr className="navbar-divider" />
+                <a className="navbar-item">
+                  <i className="icon material-icons">format_color_fill</i>{' '}
+                  Appearance{' '}
+                  <Toggle
+                    isDarkMode={isDarkMode}
+                    onChangeToggle={onChangeToggle}
+                  />
+                </a>
+                <a className="navbar-item">
+                  <i className="icon material-icons">g_translate</i> Language
+                </a>
+                <a className="navbar-item">
+                  <i className="icon material-icons">language</i> Location
+                </a>
+                <a className="navbar-item">
+                  <i className="icon material-icons">settings</i> Settings
+                </a>
+                <a className="navbar-item">
+                  <i className="icon material-icons">admin_panel_settings</i>{' '}
+                  Your data in YouTube
+                </a>
+                <a className="navbar-item">
+                  <i className="icon material-icons">help</i> Help
+                </a>
+                <a className="navbar-item">
+                  <i className="icon material-icons">feedback</i> Send feedback
+                </a>
+                <a className="navbar-item">
+                  <i className="icon material-icons">keyboard</i> Keyboard
+                  shortcuts
+                </a>
+                <hr className="navbar-divider" />
+                <a className="navbar-item">Restricted mode: off</a>
               </div>
             </div>
           </div>
-        </div>
+        </Menu>
       </NavigationBar>
     );
   }

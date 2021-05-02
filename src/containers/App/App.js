@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import * as appStore from '../../store/App';
 import App from '../../components/App';
+import { defaultAll } from '../../config';
 
 function mapStateToProps(state) {
   const appSelectors = appStore.selectors(state);
@@ -8,12 +9,7 @@ function mapStateToProps(state) {
   const apiResult = appSelectors.getPopularVideos();
   const userSubscription = appSelectors.getUserSubscription();
   const queryType = appSelectors.getQueryType();
-  let suggestionsFiltered = [
-    {
-      displayText: 'All',
-      text: 'all'
-    }
-  ];
+  let suggestionsFiltered = defaultAll;
 
   const suggestions =
     apiResult.pivotSuggestions[apiResult.pivotSuggestions.length - 1]
@@ -27,7 +23,6 @@ function mapStateToProps(state) {
 
   return {
     isDarkMode: darkMode,
-    popularVideos: apiResult.value,
     userSubscription,
     suggestions: suggestionsFiltered,
     queryType

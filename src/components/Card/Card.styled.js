@@ -20,7 +20,8 @@ export const Cover = styled(({ ...rest }) => <div {...rest} />)`
   ${() => css`
     width: 100% !important;
 
-    img {
+    img,
+    iframe {
       height: auto !important;
       width: 100% !important;
     }
